@@ -14,7 +14,11 @@ body {
   background: var(--yellow);
   margin: 0;
   padding: 0;
+  font-family: 'Alegreya Sans SC',monospace;
 }
+
+button {
+font-family: 'Alegreya Sans',monospace;}
 
 .main__navigation {
   display: grid;
@@ -476,6 +480,7 @@ body {
 }
 
 .sort__select {
+  font-family: 'Alegreya Sans',monospace;
   height: 100%;
   width: 100%;
   padding: 0.2rem 0.3rem;
