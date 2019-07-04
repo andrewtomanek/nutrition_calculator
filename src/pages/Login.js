@@ -68,7 +68,6 @@ const Login = ({ history }) => {
     <div className="app">
       <Navigation />
       <form className="login__form" onSubmit={handleLogin}>
-        <h1 className="login__title">Log in</h1>
         <input
           onChange={handleChange}
           onBlur={handleBlur}
