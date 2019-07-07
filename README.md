@@ -11,7 +11,7 @@ Calculate nutrition values of picked or defined foods.
 
 ## General info
 
-Pick predefined or create your own foods. Set your healthy daily calory limit. Add items to the Cart. Sum of nutrition values will be calculated and displayed in percentages and colors. Modify cart to accomplish optimal nutrition.
+Pick predefined or create your own foods.<br /> Set your healthy daily calory limit.<br /> Add items to the Cart.<br /> Sum of nutrition values will be calculated and displayed in percentages and colors.<br /> Modify cart to accomplish optimal nutrition.
 
 <br />
   <a href="https://github.com/andrewtomanek/zdrava_strava">
@@ -23,7 +23,8 @@ Pick predefined or create your own foods. Set your healthy daily calory limit. A
 - [React.js](https://reactjs.org)
 - [Redux.js](https://redux.js.org)
 - [React-Router](https://reacttraining.com/react-router/)
-- [react-transition-group](https://redux-saga.js.org)
+- [Redux-saga](https://redux-saga.js.org)
+- [react-transition-group](https://github.com/reactjs/react-transition-group)
 - [Axios](https://github.com/axios/axios)
 - [Firebase](https://firebase.google.com)
 
