@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import Navigation from "../components/Navigation";
-import CalculatePanel from "../components/CalculatePanel";
+import SwitcherPanel from "../components/SwitcherPanel";
 import CartItem from "../components/CartItem";
 import BarBox from "../components/BarBox";
+import EmptyCart from "../components/EmptyCart";
 import Footer from "../components/Footer";
 import { connect } from "react-redux";
 import {
@@ -16,7 +17,11 @@ import "../App.css";
 
 const Cart = props => {
   const [showLimit, setShowLimit] = useState(false);
-  console.log(props.cart);
+
+  const revealLimit = () => {
+    setShowLimit(!showLimit);
+  };
+
   const moveToStorage = item => {
     props.addToStorage(item);
     props.deleteStorageAction(item.id);
@@ -33,15 +38,7 @@ const Cart = props => {
   return (
     <div className="app">
       <Navigation />
-      <div className="switch__panel">
-        <CalculatePanel />
-        <button
-          className="item__button"
-          onClick={() => setShowLimit(!showLimit)}
-        >
-          Limit
-        </button>
-      </div>
+      <SwitcherPanel revealLimit={revealLimit} cartControls />
       <BarBox showLimit={showLimit} />
       {props.cart.length > 0 ? (
         <TransitionGroup className="item__list">
@@ -64,9 +61,7 @@ const Cart = props => {
           ))}
         </TransitionGroup>
       ) : (
-        <div className="empty__cart">
-          <p className="empty__text">Žádné položky</p>
-        </div>
+        <EmptyCart showResetButton={false} />
       )}
       <Footer />
     </div>
@@ -87,7 +82,4 @@ const mapDispatchToProps = {
   deleteStorageAction
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Cart);
+export default connect(mapStateToProps, mapDispatchToProps)(Cart);

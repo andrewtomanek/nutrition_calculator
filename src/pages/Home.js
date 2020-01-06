@@ -89,6 +89,7 @@ const Home = props => {
     <div className="app">
       <Navigation />
       <SwitcherPanel
+        cartControls={false}
         revealFilters={revealFilters}
         revealInput={revealInput}
         revealLimit={revealLimit}
@@ -124,7 +125,7 @@ const Home = props => {
           removeFromStorage={removeFromStorage}
         />
       ) : (
-        <EmptyCart resetFilter={resetFilter} />
+        <EmptyCart resetFilter={resetFilter} showResetButton />
       )}
       <MorePanel displayMore={displayMore} />
       <Footer />
