@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { CSSTransition, TransitionGroup } from "react-transition-group";
+import { CSSTransition } from "react-transition-group";
 import Navigation from "../components/Navigation";
 import Form from "../components/Form";
+import SwitcherPanel from "../components/SwitcherPanel";
 import SortPanel from "../components/SortPanel";
 import FilterPanel from "../components/FilterPanel";
+import MorePanel from "../components/MorePanel";
 import BarBox from "../components/BarBox";
-import Storage from "../components/Storage";
+import ItemsList from "../components/ItemsList";
+import EmptyCart from "../components/EmptyCart";
 import Footer from "../components/Footer";
 import { connect } from "react-redux";
 import {
@@ -41,6 +44,18 @@ const Home = props => {
     }
   };
 
+  const revealFilters = () => {
+    setShowFilters(!showFilters);
+  };
+
+  const revealInput = () => {
+    setShowInput(!showInput);
+  };
+
+  const revealLimit = () => {
+    setShowLimit(!showLimit);
+  };
+
   const minusToCart = id => {
     props.deleteCartAction(id);
   };
@@ -66,33 +81,18 @@ const Home = props => {
     props.deleteFoodAction(id);
   };
 
-  const resetFilter = newArray => {
+  const resetFilter = () => {
     props.applyFilterReset(database);
   };
 
   return (
     <div className="app">
       <Navigation />
-      <div className="switch__panel">
-        <button
-          className="item__button"
-          onClick={() => setShowFilters(!showFilters)}
-        >
-          Vyfiltrovat
-        </button>{" "}
-        <button
-          className="item__button"
-          onClick={() => setShowInput(!showInput)}
-        >
-          Přidat
-        </button>{" "}
-        <button
-          className="item__button"
-          onClick={() => setShowLimit(!showLimit)}
-        >
-          Limit
-        </button>
-      </div>
+      <SwitcherPanel
+        revealFilters={revealFilters}
+        revealInput={revealInput}
+        revealLimit={revealLimit}
+      />
       <CSSTransition
         in={showInput}
         timeout={300}
@@ -114,44 +114,19 @@ const Home = props => {
       </CSSTransition>
       <BarBox showLimit={showLimit} />
       {props.foods && props.foods.length > 0 ? (
-        <TransitionGroup className="item__list">
-          {props.foods.map((item, index) => (
-            <CSSTransition
-              key={item.id}
-              appear={true}
-              timeout={300}
-              classNames="item"
-            >
-              <Storage
-                key={item.id}
-                index={index}
-                item={item}
-                minusToCart={minusToCart}
-                updateNumber={updateNumber}
-                plusToCart={plusToCart}
-                moveToCart={moveToCart}
-                pickItem={pickItem}
-                removeFromStorage={removeFromStorage}
-              />
-            </CSSTransition>
-          ))}
-        </TransitionGroup>
+        <ItemsList
+          foods={props.foods}
+          minusToCart={minusToCart}
+          updateNumber={updateNumber}
+          plusToCart={plusToCart}
+          moveToCart={moveToCart}
+          pickItem={pickItem}
+          removeFromStorage={removeFromStorage}
+        />
       ) : (
-        <div className="empty__cart">
-          {" "}
-          <button
-            className="filter__button"
-            onClick={() => resetFilter(props.foods)}
-          >
-            Znovu
-          </button>
-        </div>
+        <EmptyCart resetFilter={resetFilter} />
       )}
-            <div className="more__panel">
-        <button className="item__button" onClick={() => displayMore()}>
-          Více
-        </button>
-      </div>
+      <MorePanel displayMore={displayMore} />
       <Footer />
     </div>
   );
@@ -174,7 +149,4 @@ const mapDispatchToProps = {
   fillStorage
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Home);
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

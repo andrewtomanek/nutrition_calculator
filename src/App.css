@@ -59,7 +59,7 @@ font-family: 'Alegreya Sans',monospace;}
 
 .nav__link a:hover,
 .nav__link a:active {
-  background: red;
+  background: hsla(0, 70%, 70%, 1);
 }
 
 .app {
@@ -454,8 +454,7 @@ color: hsla(24, 70%, 50%, 1);
 .controls__panel {
   display: grid;
   grid-auto-flow: column;
-  padding: 0.5rem 0.3rem;
-  background-color: hsla(40, 90%, 50%, 1);
+  background: hsla(24, 90%, 60%, 1);
 }
 
 .filter__panel {
