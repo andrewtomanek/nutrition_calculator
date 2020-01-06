@@ -74,11 +74,6 @@ const Home = props => {
     <div className="app">
       <Navigation />
       <div className="switch__panel">
-        <button className="item__button" onClick={() => displayMore()}>
-          Více
-        </button>
-      </div>
-      <div className="switch__panel">
         <button
           className="item__button"
           onClick={() => setShowFilters(!showFilters)}
@@ -152,6 +147,11 @@ const Home = props => {
           </button>
         </div>
       )}
+            <div className="more__panel">
+        <button className="item__button" onClick={() => displayMore()}>
+          Více
+        </button>
+      </div>
       <Footer />
     </div>
   );
