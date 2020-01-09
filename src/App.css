@@ -218,7 +218,7 @@ font-family: 'Alegreya Sans',monospace;}
   display: grid;
   grid-gap: 2rem 0.5rem;
   grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: repeat(auto-fill, minmax(60vh, 1fr));
+  grid-template-rows: repeat(auto-fill, minmax(50vh, 1fr));
   align-items: center;
   align-content: space-between;
   justify-content: space-between;
@@ -689,7 +689,8 @@ footer {
   border-radius: 1rem;
 }
 
-@media all and (max-width: 1280px) {
+
+@media all and (max-width: 1980px) {
   .item__button {
     font-size: 1.5rem;
   }
@@ -697,6 +698,27 @@ footer {
   .item__list {
     grid-gap: 1rem 0.5rem;
     grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(auto-fill, minmax(60vh, 1fr));
+    border-radius: 1rem;
+    padding: 1rem;
+    max-width: 90vw;
+  }
+
+  .item__text {
+    padding: 0.3rem 1rem;
+    font-size: 1.1rem;
+    font-weight: 800;
+  }
+}
+
+@media all and (max-width: 1680px) {
+  .item__button {
+    font-size: 1.5rem;
+  }
+
+  .item__list {
+    grid-gap: 1rem 0.5rem;
+    grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(auto-fill, minmax(70vh, 1fr));
     border-radius: 1rem;
     padding: 1rem;
@@ -723,7 +745,7 @@ footer {
 
   .item__list {
     grid-gap: 1rem 0.5rem;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(auto-fill, minmax(80vh, 1fr));
     border-radius: 1rem;
     padding: 1rem;
@@ -758,7 +780,7 @@ footer {
 
   .item__list {
     grid-gap: 1rem 0.5rem;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(1, 1fr);
     grid-template-rows: repeat(auto-fill, minmax(90vh, 1fr));
     border-radius: 1rem;
     padding: 1rem;
