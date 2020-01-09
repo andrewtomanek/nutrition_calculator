@@ -126,7 +126,7 @@ font-family: 'Alegreya Sans',monospace;}
   font-size: 2rem;
   font-weight: 600;
   padding: 0.2rem;
-  color: var(--orange);
+  color: red;
   border: 0.3rem solid red;
   background-color: #ffc9aa;
 }
