@@ -1,5 +1,5 @@
 import React from "react";
-import Storage from "../components/Storage";
+import CardBox from "../components/CardBox";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 
 export default function ItemsList({
@@ -8,8 +8,11 @@ export default function ItemsList({
   updateNumber,
   plusToCart,
   moveToCart,
+  moveToStorage,
   pickItem,
-  removeFromStorage
+  removeFromStorage,
+  removeItem,
+  basicButtons
 }) {
   return (
     <TransitionGroup className="item__list">
@@ -20,7 +23,7 @@ export default function ItemsList({
           timeout={300}
           classNames="item"
         >
-          <Storage
+          <CardBox
             key={item.id}
             index={index}
             item={item}
@@ -28,8 +31,11 @@ export default function ItemsList({
             updateNumber={updateNumber}
             plusToCart={plusToCart}
             moveToCart={moveToCart}
+            moveToStorage={moveToStorage}
             pickItem={pickItem}
             removeFromStorage={removeFromStorage}
+            removeItem={removeItem}
+            basicButtons={basicButtons}
           />
         </CSSTransition>
       ))}

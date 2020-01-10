@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 
-export default function ButtonPanel({item,...props }) {
+export default function ButtonPanel({item, basicButtons,...props }) {
   const [itemQuantity, setQuantity] = useState(0);
   const [oldItem, setOldItem] = useState(item);
 
   useEffect(() => {
     setOldItem(item);
-  }, []);
+  }, [item]);
 
   const handleInput = e => {
     let currentValue = e.target.value;
@@ -26,25 +26,35 @@ export default function ButtonPanel({item,...props }) {
   };
 
   return (
-    <div className="item__controls">
-      <button
+    <div className={basicButtons ? 'item__controls' : 'cart__controls'}>
+     {basicButtons ? ( <button
         className="item__button"
         onClick={() => props.moveToCart(item)}
       >
         {"\u{1F6D2}"}
-      </button>
+      </button>) :(
+        <button className="item__button" onClick={() => props.moveToStorage(item)}>
+          {"\u{1F5D1}"}
+        </button>
+      )}
       <button
         className="item__button"
         onClick={() => props.pickItem(item.id)}
       >
         {"\u{2714}"}
       </button>
+      {basicButtons ? (
       <button
         className="item__button"
         onClick={() => props.removeFromStorage(item.id)}
       >
         {"\u{274C}"}
-      </button>
+      </button>) :(
+           <button className="item__button" onClick={() => props.removeItem(item.id)}>
+           {"\u{274C}"}
+         </button>
+      )}
+      {basicButtons && (<>
       <button
         className="item__button-red"
         onClick={() => props.minusToCart(item.id)}
@@ -62,7 +72,7 @@ export default function ButtonPanel({item,...props }) {
         onClick={() => props.plusToCart(item)}
       >
         +
-      </button>
+      </button></>)}
     </div>
   );
 }

@@ -397,6 +397,7 @@ color: hsla(24, 70%, 50%, 1);
   grid-auto-flow: column;
   justify-items: space-around;
   padding: 0.5rem 0.3rem;
+  border-radius: 0.3rem 0.3rem 0rem 0rem;
   background-color: var(--orange);
 }
 
@@ -518,6 +519,7 @@ color: hsla(24, 70%, 50%, 1);
   padding: 0.2rem 0rem;
   width: 95%;
   background-color: hsla(54, 60%, 70%, 1);
+  border-radius: 0rem 0rem 0.3rem 0.3rem;
 }
 
 .bar__item {
@@ -699,7 +701,7 @@ footer {
     grid-gap: 1rem 0.5rem;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(auto-fill, minmax(60vh, 1fr));
-    border-radius: 1rem;
+    border-radius: 0.5rem;
     padding: 1rem;
     max-width: 90vw;
   }
@@ -720,7 +722,7 @@ footer {
     grid-gap: 1rem 0.5rem;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(auto-fill, minmax(70vh, 1fr));
-    border-radius: 1rem;
+    border-radius: 0.5rem;
     padding: 1rem;
     max-width: 90vw;
   }
@@ -747,7 +749,7 @@ footer {
     grid-gap: 1rem 0.5rem;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(auto-fill, minmax(80vh, 1fr));
-    border-radius: 1rem;
+    border-radius: 0.5rem;
     padding: 1rem;
     max-width: 90vw;
   }
@@ -782,7 +784,7 @@ footer {
     grid-gap: 1rem 0.5rem;
     grid-template-columns: repeat(1, 1fr);
     grid-template-rows: repeat(auto-fill, minmax(90vh, 1fr));
-    border-radius: 1rem;
+    border-radius: 0.5rem;
     padding: 1rem;
     max-width: 90vw;
   }
@@ -838,7 +840,7 @@ footer {
     grid-gap: 1rem 0.5rem;
     grid-template-columns: 100%;
     grid-template-rows: repeat(auto-fill, minmax(100vh, 1fr));
-    border-radius: 1rem;
+    border-radius: 0.5rem;
     padding: 1rem;
     max-width: 90vw;
   }

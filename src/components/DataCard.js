@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function ItemCard({item, ...props}) {
+export default function DataCard({item, ...props}) {
     return (
         <div className="text__box" onClick={() => props.pickItem(item.id)}>
         <p className="item__text">Název: {item.image}</p>

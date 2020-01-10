@@ -123,6 +123,7 @@ const Home = props => {
           moveToCart={moveToCart}
           pickItem={pickItem}
           removeFromStorage={removeFromStorage}
+          basicButtons
         />
       ) : (
         <EmptyCart resetFilter={resetFilter} showResetButton />
