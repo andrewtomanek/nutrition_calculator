@@ -5,6 +5,60 @@ import {
   displayInformation
 } from "../store/actions/storageActions";
 import database from "../data/db";
+import styled from "styled-components";
+
+const ControlPanel = styled.div`
+  display: grid;
+  grid-auto-flow: column;
+  background: hsla(24, 90%, 60%, 1);
+`;
+
+const SelectField = styled.select`
+  font-family: "Alegreya Sans", monospace;
+  height: 100%;
+  width: 100%;
+  padding: 0.2rem 0.3rem;
+  font-size: 1rem;
+  font-weight: 900;
+  background-color: var(--green);
+  color: #fff;
+`;
+
+const SelectOption = styled.option`
+  height: 100%;
+  width: 100%;
+  padding: 0.3rem 1rem;
+  font-size: 1rem;
+  font-weight: 900;
+  color: var(--green);
+  background-color: #fff;
+`;
+
+const BasicButton = styled.button`
+  padding: 0.3rem 1rem;
+  font-size: 2rem;
+  font-weight: 900;
+  background-color: var(--green);
+  color: #fff;
+  z-index: 4;
+  transition: all 200ms cubic-bezier(0.215, 0.61, 0.355, 1);
+  &:hover {
+    color: var(--green);
+    background-color: white;
+  }
+  @media all and (max-width: 1680px) {
+    font-size: 1.5rem;
+  }
+  @media all and (max-width: 980px) {
+    font-size: 1.3rem;
+  }
+  @media all and (max-width: 736px) {
+    font-size: 1.2rem;
+  }
+  @media all and (max-width: 480px) {
+    font-size: 1.1rem;
+  }
+`;
 
 const SortPanel = props => {
   const [sortTypes] = useState(Object.keys(database[0]));
@@ -34,39 +88,30 @@ const SortPanel = props => {
   };
 
   return (
-    <div className="controls__panel">
-      <button
-        className="filter__button"
-        onClick={() => props.displayInformation()}
-      >
-        Data
-      </button>
-      <select
-        className="sort__select"
+    <ControlPanel>
+      <BasicButton onClick={() => props.displayInformation()}>Data</BasicButton>
+      <SelectField
         value={selectedSortType}
         onChange={e => setSortString(e.target.value)}
       >
         {sortTypes.map((item, index) => (
-          <option className="sort__option" key={index} value={item}>
+          <SelectOption key={index} value={item}>
             {item}
-          </option>
+          </SelectOption>
         ))}
-      </select>
-      <select
-        className="sort__select"
+      </SelectField>
+      <SelectField
         value={selectedSortBy}
         onChange={e => setSortBy(e.target.value)}
       >
         {sortDirection.map((item, index) => (
-          <option className="sort__option" key={index} value={item}>
+          <SelectOption key={index} value={item}>
             {item}
-          </option>
+          </SelectOption>
         ))}
-      </select>
-      <button className="filter__button" onClick={() => selectFilter()}>
-        Seřadit
-      </button>
-    </div>
+      </SelectField>
+      <BasicButton onClick={() => selectFilter()}>Seřadit</BasicButton>
+    </ControlPanel>
   );
 };
 
@@ -80,7 +125,4 @@ const mapDispatchToProps = {
   displayInformation
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(SortPanel);
+export default connect(mapStateToProps, mapDispatchToProps)(SortPanel);
