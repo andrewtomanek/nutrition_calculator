@@ -3,8 +3,8 @@ import ReactDOM from "react-dom";
 import { createStore, applyMiddleware, compose } from "redux";
 import createSagaMiddleware from "redux-saga";
 import { Provider } from "react-redux";
-import cartReducer from "./store/reducers/cartReducer";
-import { watchStoreBuilder } from "./store/sagas/cartSaga";
+import rootReducer from "./store/reducers/rootReducer";
+import { watchStoreBuilder } from "./store/sagas/mainSaga";
 
 import "./App.css";
 import App from "./App";
@@ -14,7 +14,7 @@ const composeEnhancers = (process.env.NODE_ENV === 'development' ? window.__REDU
 const sagaMiddleware = createSagaMiddleware();
 
 const store = createStore(
-  cartReducer,
+  rootReducer,
   composeEnhancers(applyMiddleware(sagaMiddleware))
 );
 

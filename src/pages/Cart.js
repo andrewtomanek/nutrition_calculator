@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { CSSTransition, TransitionGroup } from "react-transition-group";
 import Navigation from "../components/Navigation";
 import SwitcherPanel from "../components/SwitcherPanel";
 import ItemsList from "../components/ItemsList";

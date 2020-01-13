@@ -1,7 +1,5 @@
 import * as actionTypes from "./actionTypes";
 
-// Actions
-
 export const initInventory = authData => {
   return {
     type: actionTypes.INIT_INVENTORY,
@@ -143,12 +141,14 @@ export const displayInformation = () => {
     type: actionTypes.DISPLAY_INFO
   };
 };
+
 export const applycalculateSum = sum => {
   return {
     type: actionTypes.APPLY_CALCULATE_SUM,
     payload: sum
   };
 };
+
 export const updateCalculateSum = sum => {
   return {
     type: actionTypes.UPDATE_CALCULATE_SUM,
