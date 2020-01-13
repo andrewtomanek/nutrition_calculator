@@ -3,6 +3,51 @@ import { connect } from "react-redux";
 import { initInventory, saveToStore } from "../store/actions/storageActions";
 import { AuthContext } from "../auth/Auth.js";
 import app from "../auth/base.js";
+import styled from "styled-components";
+
+const DataContainer = styled.div`
+  width: 95%;
+  display: grid;
+  grid-gap: 0.1rem 0.3rem;
+  grid-auto-flow: column;
+  align-content: center;
+  align-items: center;
+  padding: 0.2rem 0.3rem;
+`;
+
+const AuthButton = styled.button`
+  padding: 0.2rem 0.5rem;
+  font-size: 1rem;
+  font-weight: 800;
+  color: white;
+  background: var(--green);
+  border-radius: 0.5rem;
+  border: 0.1rem solid white;
+  cursor: pointer;
+  transition: all 200ms cubic-bezier(0.215, 0.61, 0.355, 1);
+  &:hover {
+    color: var(--green);
+    background-color: white;
+  }
+  @media all and (max-width: 480px) {
+    padding: 0rem 0.5rem;
+    font-size: 2rem;
+  }
+`;
+
+const LoginStatus = styled.p`
+  padding: 0.1rem 0.5rem;
+  font-size: 1.1rem;
+  font-weight: 900;
+  background-color: var(--yellow);
+  color: hsla(80, 100%, 30%, 1);
+  border-radius: 0.5rem;
+  border: 0.2rem solid var(--green);
+  @media all and (max-width: 480px) {
+    padding: 0rem 0.5rem;
+    font-size: 2rem;
+  }
+`;
 
 const DatabaseControl = props => {
   const [currentToken, setCurrentToken] = useState(null);
@@ -42,22 +87,18 @@ const DatabaseControl = props => {
     props.saveToStore(userData);
   };
   return (
-    <div className="data__control">
+    <DataContainer>
       {currentUser &&
       props.foods &&
       props.cart.length > 0 &&
       props.foods.length > 0 ? (
-        <button className="auth__button" onClick={() => saveData()}>
-          Uložit
-        </button>
+        <AuthButton onClick={() => saveData()}>Uložit</AuthButton>
       ) : null}{" "}
       {currentUser ? (
-        <button className="auth__button" onClick={() => fetchData()}>
-          Nahrát
-        </button>
+        <AuthButton onClick={() => fetchData()}>Nahrát</AuthButton>
       ) : null}
-      {currentUser && <p className="login__display">{currentUser.email}</p>}
-    </div>
+      {currentUser && <LoginStatus>{currentUser.email}</LoginStatus>}
+    </DataContainer>
   );
 };
 
@@ -72,7 +113,4 @@ const mapDispatchToProps = {
   saveToStore
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(DatabaseControl);
+export default connect(mapStateToProps, mapDispatchToProps)(DatabaseControl);
