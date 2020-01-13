@@ -12,7 +12,20 @@ import {
   deleteCartAction,
   deleteStorageAction
 } from "../store/actions/storageActions";
-import "../App.css";
+import styled from 'styled-components'
+
+const PageLayout = styled.div`
+display: grid;
+grid-auto-flow: row;
+justify-items: center;
+margin: 0;
+padding: 0;
+min-height: 100vh;
+overflow: hidden;
+@media all and (max-width: 480px) {
+    font-size: 1.1rem;
+  }
+`;
 
 const Cart = props => {
   const [showLimit, setShowLimit] = useState(false);
@@ -35,7 +48,7 @@ const Cart = props => {
   };
 
   return (
-    <div className="app">
+    <PageLayout>
       <Navigation />
       <SwitcherPanel revealLimit={revealLimit} cartControls />
       <BarBox showLimit={showLimit} />
@@ -51,7 +64,7 @@ const Cart = props => {
         <EmptyCart showResetButton={false} />
       )}
       <Footer />
-    </div>
+      </PageLayout>
   );
 };
 

@@ -4,6 +4,20 @@ import app from "../auth/base.js";
 import { AuthContext } from "../auth/Auth.js";
 import validateAuth from "../auth/validateAuth";
 import Navigation from "../components/Navigation";
+import styled from 'styled-components'
+
+const PageLayout = styled.div`
+display: grid;
+grid-auto-flow: row;
+justify-items: center;
+margin: 0;
+padding: 0;
+min-height: 100vh;
+overflow: hidden;
+@media all and (max-width: 480px) {
+    font-size: 1.1rem;
+  }
+`;
 
 const Login = ({ history }) => {
   const [values, setValues] = useState({
@@ -65,7 +79,7 @@ const Login = ({ history }) => {
   };
 
   return (
-    <div className="app">
+    <PageLayout>
       <Navigation />
       <form className="login__form" onSubmit={handleLogin}>
         <input
@@ -101,7 +115,7 @@ const Login = ({ history }) => {
           Přihlásit
         </button>
       </form>
-    </div>
+      </PageLayout>
   );
 };
 

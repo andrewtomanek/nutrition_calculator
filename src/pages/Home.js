@@ -22,7 +22,20 @@ import {
   deleteCartAction
 } from "../store/actions/storageActions";
 import database from "../data/db";
-import "../App.css";
+import styled from 'styled-components'
+
+const PageLayout = styled.div`
+display: grid;
+grid-auto-flow: row;
+justify-items: center;
+margin: 0;
+padding: 0;
+min-height: 100vh;
+overflow: hidden;
+@media all and (max-width: 480px) {
+    font-size: 1.1rem;
+  }
+`;
 
 const Home = props => {
   const [showFilters, setShowFilters] = useState(false);
@@ -86,7 +99,7 @@ const Home = props => {
   };
 
   return (
-    <div className="app">
+    <PageLayout>
       <Navigation />
       <SwitcherPanel
         cartControls={false}
@@ -130,7 +143,7 @@ const Home = props => {
       )}
       <MorePanel displayMore={displayMore} />
       <Footer />
-    </div>
+    </PageLayout>
   );
 };
 
