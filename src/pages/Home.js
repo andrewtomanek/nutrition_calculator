@@ -37,6 +37,24 @@ overflow: hidden;
   }
 `;
 
+const ControlsLayout = styled.div`
+  width: 95%;
+  display: grid;
+  grid-gap: 0.1rem 0.3rem;
+  grid-auto-flow: column;
+  justify-items: space-around;
+  padding: 0.2rem 0.3rem;
+  background-color: hsla(40, 90%, 50%, 1);
+  @media all and (max-width: 736px) {
+    grid-auto-flow: row;
+    justify-items: space-around;
+  } 
+   @media all and (max-width: 480px) {
+    grid-auto-flow: row;
+    justify-items: space-around;
+  }
+`;
+
 const Home = props => {
   const [showFilters, setShowFilters] = useState(false);
   const [showInput, setShowInput] = useState(false);
@@ -121,10 +139,10 @@ const Home = props => {
         classNames="alert"
         unmountOnExit
       >
-        <div className="controls__box">
+        <ControlsLayout>
           <FilterPanel />
           <SortPanel />
-        </div>
+        </ControlsLayout>
       </CSSTransition>
       <BarBox showLimit={showLimit} />
       {props.foods && props.foods.length > 0 ? (

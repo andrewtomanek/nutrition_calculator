@@ -4,7 +4,6 @@ import { updateCalculateSum } from "../store/actions/storageActions";
 import FormLimit from "./FormLimit";
 import BarStripe from "./BarStripe";
 import { CSSTransition } from "react-transition-group";
-import "../App.css";
 
 const BarBox = props => {
   const [barData, setbarData] = useState([]);

@@ -19,6 +19,54 @@ overflow: hidden;
   }
 `;
 
+const LoginForm = styled.form`
+  display: grid;
+  grid-auto-flow: row;
+  justify-content: center;
+  align-items: center;
+  grid-gap: 2rem;
+`;
+
+const ErrorText = styled.p`
+  color: red;
+  font-size: 0.9rem;
+  font-weight: 400;
+  margin: 0;
+`;
+
+const ErrorSpan = styled.span`
+  color: red;
+  font-size: 0.9rem;
+  font-weight: 400;
+  margin: 0;
+  opacity:0;
+`;
+
+const LoginButton = styled.button`
+  font-size: 1rem;
+  padding: 0.3rem;
+  font-weight: 700;
+  font-size: 2rem;
+  background-color: var(--green);
+  border: 0.2rem solid white;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  animation: floating-text 500ms ease-in-out;
+  :disabled {
+    animation: none;
+    border: 0.2rem solid grey;
+  background-color: white;
+  color: grey;
+  cursor: not-allowed;
+  }
+  &:hover {
+    color: var(--orange);
+  border: 0.2rem solid var(--orange);
+  background-color: white;
+  }
+`;
+
 const Login = ({ history }) => {
   const [values, setValues] = useState({
     email: "",
@@ -81,7 +129,7 @@ const Login = ({ history }) => {
   return (
     <PageLayout>
       <Navigation />
-      <form className="login__form" onSubmit={handleLogin}>
+      <LoginForm onSubmit={handleLogin}>
         <input
           onChange={handleChange}
           onBlur={handleBlur}
@@ -91,7 +139,7 @@ const Login = ({ history }) => {
           autoComplete="off"
           placeholder="E-mail"
         />
-        {errors.email && <p className="error-text">{errors.email}</p>}
+        {errors.email ? <ErrorText>{errors.email}</ErrorText>: <ErrorSpan>noErrors</ErrorSpan>  }
         <input
           onChange={handleChange}
           onBlur={handleBlur}
@@ -101,9 +149,8 @@ const Login = ({ history }) => {
           type="password"
           placeholder="Heslo"
         />
-        {errors.password && <p className="error-text">{errors.password}</p>}
-        <button
-          className="login__button"
+        {errors.password ? <ErrorText>{errors.password}</ErrorText>: <ErrorSpan>noErrors</ErrorSpan>  }
+        <LoginButton
           disabled={
             !(
               Object.keys(errors).length === 0 &&
@@ -113,8 +160,8 @@ const Login = ({ history }) => {
           type="submit"
         >
           Přihlásit
-        </button>
-      </form>
+        </LoginButton>
+      </LoginForm>
       </PageLayout>
   );
 };

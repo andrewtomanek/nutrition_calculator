@@ -5,10 +5,12 @@ import SignUp from "./pages/SignUp";
 import { AuthProvider } from "./auth/Auth";
 import Home from "./pages/Home";
 import Cart from "./pages/Cart";
-import "./App.css";
+import GlobalStyle  from './theme/globalStyle';
 
 const App = () => {
   return (
+    <>
+    <GlobalStyle />
     <AuthProvider>
       <BrowserRouter>
         <Switch>
@@ -19,7 +21,9 @@ const App = () => {
         </Switch>
       </BrowserRouter>
     </AuthProvider>
+    </>
   );
 };
 
 export default App;
+
