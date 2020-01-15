@@ -35,90 +35,6 @@ font-family: 'Alegreya Sans',monospace;}
   max-width: 90vw;
 }
 
-.item__container {
-    display: grid;
-    grid: 2fr 1fr / 1fr;
-    align-items: center;
-    align-content: space-between;
-    justify-content: space-between;
-    background-color: var(--green);
-    box-shadow: 0.1rem 0.1rem 0.1rem rgba(0, 0, 0, 0.15);
-    border-radius: 0.3rem;
-    height: 100%;
-    width: 100%;
-  }
-
-  .item__controls {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  align-content: end;
-  justify-content: center;
-  grid-area: 2 / 1 / 3 / 1;
-  z-index: 4;
-  height: 100%;
-  width: 100%;
-  font-size: 1rem;
-  font-weight: 900;
-  color: #fff;
-}
-
-.item__button {
-  padding: 0.3rem 1rem;
-  font-size: 1rem;
-  font-weight: 900;
-  background-color: var(--green);
-  color: #fff;
-  z-index: 4;
-  transition: all 200ms cubic-bezier(0.215, 0.61, 0.355, 1);
-}
-
-.item__button:hover {
-  color: var(--green);
-  background-color: white;
-}
-
-.item__button-green {
-  padding: 0.3rem 0.1rem;
-  font-size: 2rem;
-  font-weight: 900;
-  background-color: var(--green);
-color: hsla(24, 70%, 50%, 1);
-  z-index: 4;
-  transition: all 200ms cubic-bezier(0.215, 0.61, 0.355, 1);
-}
-
-.item__button-green:hover {
-  color: var(--green);
-  background-color: hsla(24, 70%, 50%, 1);
-}
-
-.item__button-red {
-  padding: 0.3rem 0.1rem;
-  font-size: 2rem;
-  font-weight: 900;
-  background-color: var(--green);
-  color: red;
-  z-index: 4;
-  transition: all 400ms cubic-bezier(0.215, 0.61, 0.355, 1);
-}
-
-.item__button-red:hover {
-  background-color: red;
-  color: var(--green);
-}
-
-.item__input {
-  width: 80%;
-  margin: 0;
-  padding: 0.1rem 0.3rem;
-  font-size: 1rem;
-  font-weight: 600;
-  text-align: center;
-  background-color: var(--green);
-  color: #fff;
-}
-
 .item-enter {
   opacity: 0;
 }
@@ -138,14 +54,6 @@ color: hsla(24, 70%, 50%, 1);
 .item-exit-done {
   transition: opacity 300ms ease-in-out;
   opacity: 0;
-}
-
-.bar__panel {
-  margin: 0;
-  padding: 0.2rem 0rem;
-  width: 95%;
-  background-color: hsla(54, 60%, 70%, 1);
-  border-radius: 0rem 0rem 0.3rem 0.3rem;
 }
 
 .bar__item {

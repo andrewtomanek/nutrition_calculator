@@ -1,8 +1,82 @@
 import React, { useState, useEffect } from "react";
+import styled from "styled-components";
+
+const UnitInput = styled.input`
+  width: 80%;
+  margin: 0;
+  padding: 0.1rem 0.3rem;
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+  background-color: var(--green);
+  color: #fff;
+`;
+
+const BasicButton = styled.button`
+  padding: 0.3rem 1rem;
+  font-size: 1.6rem;
+  font-weight: 900;
+  background-color: var(--green);
+  color: #fff;
+  z-index: 4;
+  transition: all 200ms cubic-bezier(0.215, 0.61, 0.355, 1);
+  &:hover {
+    color: var(--green);
+    background-color: white;
+  }
+  @media all and (max-width: 1680px) {
+    font-size: 1.5rem;
+  }
+  @media all and (max-width: 980px) {
+    font-size: 1.3rem;
+  }
+  @media all and (max-width: 736px) {
+    font-size: 1.2rem;
+  }
+  @media all and (max-width: 480px) {
+    font-size: 1.1rem;
+  }
+`;
+
+const GreenButton = styled(BasicButton)`
+  background-color: var(--green);
+color: hsla(24, 70%, 50%, 1);
+  &:hover {
+    color: var(--green);
+  background-color: hsla(24, 70%, 50%, 1);
+  }
+`;
+
+const RedButton = styled(BasicButton)`
+  background-color: var(--green);
+  color: red;
+  &:hover {
+    background-color: red;
+  color: var(--green);
+  }
+`;
+
+
 
 export default function ButtonPanel({item, basicButtons,...props }) {
   const [itemQuantity, setQuantity] = useState(0);
   const [oldItem, setOldItem] = useState(item);
+
+  const ControlsContainer = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-content: end;
+  justify-content: center;
+  grid-area: 2 / 1 / 3 / 1;
+  z-index: 4;
+  height: 100%;
+  width: 100%;
+  font-size: 1rem;
+  font-weight: 900;
+  color: #fff;
+  grid-template-rows: ${() => basicButtons ? "1fr 1fr" : "1fr"};
+
+`;
 
   useEffect(() => {
     setOldItem(item);
@@ -26,53 +100,47 @@ export default function ButtonPanel({item, basicButtons,...props }) {
   };
 
   return (
-    <div className={basicButtons ? 'item__controls' : 'cart__controls'}>
-     {basicButtons ? ( <button
-        className="item__button"
+    <ControlsContainer>
+     {basicButtons ? ( <BasicButton
         onClick={() => props.moveToCart(item)}
       >
         {"\u{1F6D2}"}
-      </button>) :(
-        <button className="item__button" onClick={() => props.moveToStorage(item)}>
+      </BasicButton>) :(
+        <BasicButton onClick={() => props.moveToStorage(item)}>
           {"\u{1F5D1}"}
-        </button>
+        </BasicButton>
       )}
-      <button
-        className="item__button"
+      <BasicButton
         onClick={() => props.pickItem(item.id)}
       >
         {"\u{2714}"}
-      </button>
+      </BasicButton>
       {basicButtons ? (
-      <button
-        className="item__button"
+      <BasicButton
         onClick={() => props.removeFromStorage(item.id)}
       >
         {"\u{274C}"}
-      </button>) :(
-           <button className="item__button" onClick={() => props.removeItem(item.id)}>
+      </BasicButton>) :(
+           <BasicButton onClick={() => props.removeItem(item.id)}>
            {"\u{274C}"}
-         </button>
+         </BasicButton>
       )}
       {basicButtons && (<>
-      <button
-        className="item__button-red"
+      <RedButton
         onClick={() => props.minusToCart(item.id)}
       >
         -
-      </button>
-      <input
+      </RedButton>
+      <UnitInput
         type="number"
-        className="item__input"
         value={itemQuantity}
         onChange={e => handleInput(e)}
       />
-      <button
-        className="item__button-green"
+      <GreenButton
         onClick={() => props.plusToCart(item)}
       >
         +
-      </button></>)}
-    </div>
+      </GreenButton></>)}
+    </ControlsContainer>
   );
 }
