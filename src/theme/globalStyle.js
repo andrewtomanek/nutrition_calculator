@@ -22,19 +22,6 @@ body {
 button {
 font-family: 'Alegreya Sans',monospace;}
 
-.item__list {
-  display: grid;
-  grid-gap: 2rem 0.5rem;
-  grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: repeat(auto-fill, minmax(50vh, 1fr));
-  align-items: center;
-  align-content: space-between;
-  justify-content: space-between;
-  background-color: var(--orange);
-  padding: 1rem;
-  max-width: 90vw;
-}
-
 .item-enter {
   opacity: 0;
 }
@@ -54,18 +41,6 @@ font-family: 'Alegreya Sans',monospace;}
 .item-exit-done {
   transition: opacity 300ms ease-in-out;
   opacity: 0;
-}
-
-.bar__item {
-  display: grid;
-  align-content: center;
-  justify-content: center;
-  grid: 1fr / 1fr;
-  height: 4vh;
-  width: 100%;
-  z-index: 2;
-  border-bottom: 0.2rem solid white;
-  overflow: hidden;
 }
 
 .login__input {
