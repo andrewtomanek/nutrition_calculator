@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { StyledLink } from "../styles/elements";
 import styled from "styled-components";
 
 
@@ -33,18 +33,6 @@ const FooterContent = styled.div`
 `;
 
 const FooterLink = styled.a`
-  background: hsla(24, 90%, 60%, 1);
-  color: white;
-  font-weight: 700;
-  font-size: 1.1rem;
-  padding: 0.1rem 0.5rem;
-  margin: 0rem;
-  text-align: left;
-  text-decoration: none;
-  border-radius: 1rem;
-`;
-
-const StyledLink = styled(NavLink)`
   background: hsla(24, 90%, 60%, 1);
   color: white;
   font-weight: 700;

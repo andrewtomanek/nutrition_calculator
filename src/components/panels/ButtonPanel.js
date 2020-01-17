@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import {BasicButton, GreenButton, RedButton} from '../../styles/elements.js'
 
 const UnitInput = styled.input`
   width: 80%;
@@ -11,52 +12,6 @@ const UnitInput = styled.input`
   background-color: var(--green);
   color: #fff;
 `;
-
-const BasicButton = styled.button`
-  padding: 0.3rem 1rem;
-  font-size: 1.6rem;
-  font-weight: 900;
-  background-color: var(--green);
-  color: #fff;
-  z-index: 4;
-  transition: all 200ms cubic-bezier(0.215, 0.61, 0.355, 1);
-  &:hover {
-    color: var(--green);
-    background-color: white;
-  }
-  @media all and (max-width: 1680px) {
-    font-size: 1.5rem;
-  }
-  @media all and (max-width: 980px) {
-    font-size: 1.3rem;
-  }
-  @media all and (max-width: 736px) {
-    font-size: 1.2rem;
-  }
-  @media all and (max-width: 480px) {
-    font-size: 1.1rem;
-  }
-`;
-
-const GreenButton = styled(BasicButton)`
-  background-color: var(--green);
-color: hsla(24, 70%, 50%, 1);
-  &:hover {
-    color: var(--green);
-  background-color: hsla(24, 70%, 50%, 1);
-  }
-`;
-
-const RedButton = styled(BasicButton)`
-  background-color: var(--green);
-  color: red;
-  &:hover {
-    background-color: red;
-  color: var(--green);
-  }
-`;
-
-
 
 export default function ButtonPanel({item, basicButtons,...props }) {
   const [itemQuantity, setQuantity] = useState(0);

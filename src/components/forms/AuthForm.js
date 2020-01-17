@@ -1,8 +1,8 @@
 import React, { useState, useCallback, useContext, useEffect } from "react";
-import app from "../auth/base.js";
+import app from "../../auth/base.js";
 import { withRouter } from "react-router";
-import { AuthContext } from "../auth/Auth.js";
-import validateAuth from "../auth/validateAuth";
+import { AuthContext } from "../../auth/Auth.js";
+import validateAuth from "../../auth/validateAuth";
 import styled from 'styled-components'
 
 const LoginForm = styled.form`

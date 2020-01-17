@@ -1,7 +1,7 @@
 import React from "react";
 import DataCard from "./DataCard";
 import ImageCard from "./ImageCard";
-import ButtonPanel from "./ButtonPanel";
+import ButtonPanel from "./panels/ButtonPanel";
 import styled from "styled-components";
 
 const CardContainer = styled.div`

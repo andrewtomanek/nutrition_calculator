@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Navigation from "../components/Navigation";
-import SwitcherPanel from "../components/SwitcherPanel";
+import SwitcherPanel from "../components/panels/SwitcherPanel";
 import ItemsList from "../components/ItemsList";
 import BarBox from "../components/BarBox";
 import EmptyCart from "../components/EmptyCart";
@@ -12,20 +12,7 @@ import {
   deleteCartAction,
   deleteStorageAction
 } from "../store/actions/storageActions";
-import styled from 'styled-components'
-
-const PageLayout = styled.div`
-display: grid;
-grid-auto-flow: row;
-justify-items: center;
-margin: 0;
-padding: 0;
-min-height: 100vh;
-overflow: hidden;
-@media all and (max-width: 480px) {
-    font-size: 1.1rem;
-  }
-`;
+import { PageLayout} from "../styles/elements.js";
 
 const Cart = props => {
   const [showLimit, setShowLimit] = useState(false);

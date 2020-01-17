@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { updateCalculateSum } from "../store/actions/storageActions";
-import FormLimit from "./FormLimit";
-import BarStripe from "./BarStripe";
+import FormLimit from "./forms/FormLimit";
+import BarStripe from "./panels/BarStripe";
 import { CSSTransition } from "react-transition-group";
 import styled from "styled-components";
 

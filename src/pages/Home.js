@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { CSSTransition } from "react-transition-group";
 import Navigation from "../components/Navigation";
-import Form from "../components/Form";
-import SwitcherPanel from "../components/SwitcherPanel";
-import SortPanel from "../components/SortPanel";
-import FilterPanel from "../components/FilterPanel";
-import MorePanel from "../components/MorePanel";
+import Form from "../components/forms/Form";
+import SwitcherPanel from "../components/panels/SwitcherPanel";
+import SortPanel from "../components/panels/SortPanel";
+import FilterPanel from "../components/panels/FilterPanel";
+import MorePanel from "../components/panels/MorePanel";
 import BarBox from "../components/BarBox";
 import ItemsList from "../components/ItemsList";
 import EmptyCart from "../components/EmptyCart";
@@ -22,38 +22,7 @@ import {
   deleteCartAction
 } from "../store/actions/storageActions";
 import database from "../data/db";
-import styled from 'styled-components'
-
-const PageLayout = styled.div`
-display: grid;
-grid-auto-flow: row;
-justify-items: center;
-margin: 0;
-padding: 0;
-min-height: 100vh;
-overflow: hidden;
-@media all and (max-width: 480px) {
-    font-size: 1.1rem;
-  }
-`;
-
-const ControlsLayout = styled.div`
-  width: 95%;
-  display: grid;
-  grid-gap: 0.1rem 0.3rem;
-  grid-auto-flow: column;
-  justify-items: space-around;
-  padding: 0.2rem 0.3rem;
-  background-color: hsla(40, 90%, 50%, 1);
-  @media all and (max-width: 736px) {
-    grid-auto-flow: row;
-    justify-items: space-around;
-  } 
-   @media all and (max-width: 480px) {
-    grid-auto-flow: row;
-    justify-items: space-around;
-  }
-`;
+import { PageLayout, ControlsLayout } from "../styles/elements.js";
 
 const Home = props => {
   const [showFilters, setShowFilters] = useState(false);

@@ -41,12 +41,12 @@ const NavigationList = styled.ul`
   align-items: center;
 `;
 
-const NavigationLink = styled.li`
+const NavigationItem = styled.li`
   margin: 0 1rem;
   text-decoration: none;
 `;
 
-const StyledLink = styled(NavLink)`
+const NavigationLink = styled(NavLink)`
   padding: 0.2rem 0.5rem;
   text-decoration: none;
   font-size: 1.5rem;
@@ -73,12 +73,12 @@ const Navigation = props => {
   return (
     <MainNavigation>
       <NavigationList>
-        <NavigationLink>
-          <StyledLink to="/">Domů</StyledLink>
-        </NavigationLink>{" "}
-        <NavigationLink>
-          <StyledLink to="/cart">Košík</StyledLink>
-        </NavigationLink>{" "}
+        <NavigationItem>
+          <NavigationLink to="/">Domů</NavigationLink>
+        </NavigationItem>{" "}
+        <NavigationItem>
+          <NavigationLink to="/cart">Košík</NavigationLink>
+        </NavigationItem>{" "}
       </NavigationList>
       <DatabaseControl />
       <AuthControl />

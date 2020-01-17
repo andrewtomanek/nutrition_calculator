@@ -1,29 +1,9 @@
 import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { AuthContext } from "../auth/Auth.js";
+import { AuthButton } from "../styles/elements";
 import app from "../auth/base";
-
 import styled from "styled-components";
-
-const AuthButton = styled.button`
-  padding: 0.2rem 0.5rem;
-  font-size: 1rem;
-  font-weight: 800;
-  color: white;
-  background: var(--green);
-  border-radius: 0.5rem;
-  border: 0.1rem solid white;
-  cursor: pointer;
-  transition: all 200ms cubic-bezier(0.215, 0.61, 0.355, 1);
-  &:hover {
-    color: var(--green);
-    background-color: white;
-  }
-  @media all and (max-width: 480px) {
-    padding: 0rem 0.5rem;
-    font-size: 2rem;
-  }
-`;
 
 const NavigationList = styled.ul`
   list-style: none;
@@ -40,7 +20,7 @@ const NavigationLink = styled.li`
   text-decoration: none;
 `;
 
-const StyledLink = styled(NavLink)`
+const AuthLink = styled(NavLink)`
   padding: 0.2rem 0.5rem;
   text-decoration: none;
   font-size: 1.5rem;
@@ -69,10 +49,10 @@ const AuthControl = props => {
         <React.Fragment>
           {" "}
           <NavigationLink>
-            <StyledLink to="/login">Přihlásit</StyledLink>
+            <AuthLink to="/login">Přihlásit</AuthLink>
           </NavigationLink>
           <NavigationLink>
-            <StyledLink to="/signup">Registrace</StyledLink>
+            <AuthLink to="/signup">Registrace</AuthLink>
           </NavigationLink>{" "}
         </React.Fragment>
       ) : (

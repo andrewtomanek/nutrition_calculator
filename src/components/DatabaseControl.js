@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { initInventory, saveToStore } from "../store/actions/storageActions";
 import { AuthContext } from "../auth/Auth.js";
 import app from "../auth/base.js";
+import { AuthButton } from "../styles/elements";
 import styled from "styled-components";
 
 const DataContainer = styled.div`
@@ -13,26 +14,6 @@ const DataContainer = styled.div`
   align-content: center;
   align-items: center;
   padding: 0.2rem 0.3rem;
-`;
-
-const AuthButton = styled.button`
-  padding: 0.2rem 0.5rem;
-  font-size: 1rem;
-  font-weight: 800;
-  color: white;
-  background: var(--green);
-  border-radius: 0.5rem;
-  border: 0.1rem solid white;
-  cursor: pointer;
-  transition: all 200ms cubic-bezier(0.215, 0.61, 0.355, 1);
-  &:hover {
-    color: var(--green);
-    background-color: white;
-  }
-  @media all and (max-width: 480px) {
-    padding: 0rem 0.5rem;
-    font-size: 2rem;
-  }
 `;
 
 const LoginStatus = styled.p`
