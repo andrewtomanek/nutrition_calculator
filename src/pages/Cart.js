@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Navigation from "../components/Navigation";
-import SwitcherPanel from "../components/SwitcherPanel";
+import SwitcherPanel from "../components/panels/SwitcherPanel";
 import ItemsList from "../components/ItemsList";
 import BarBox from "../components/BarBox";
 import EmptyCart from "../components/EmptyCart";
@@ -12,7 +12,7 @@ import {
   deleteCartAction,
   deleteStorageAction
 } from "../store/actions/storageActions";
-import "../App.css";
+import { PageLayout} from "../styles/elements.js";
 
 const Cart = props => {
   const [showLimit, setShowLimit] = useState(false);
@@ -35,7 +35,7 @@ const Cart = props => {
   };
 
   return (
-    <div className="app">
+    <PageLayout>
       <Navigation />
       <SwitcherPanel revealLimit={revealLimit} cartControls />
       <BarBox showLimit={showLimit} />
@@ -51,7 +51,7 @@ const Cart = props => {
         <EmptyCart showResetButton={false} />
       )}
       <Footer />
-    </div>
+      </PageLayout>
   );
 };
 

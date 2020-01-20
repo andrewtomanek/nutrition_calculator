@@ -3,8 +3,14 @@ import { connect } from "react-redux";
 import {
   applyFilterWord,
   displayInformation
-} from "../store/actions/storageActions";
-import database from "../data/db";
+} from "../../store/actions/storageActions";
+import database from "../../data/db";
+import {
+  BasicButton,
+  ControlPanel,
+  SelectField,
+  SelectOption
+} from "../../styles/elements.js";
 
 const SortPanel = props => {
   const [sortTypes] = useState(Object.keys(database[0]));
@@ -34,39 +40,30 @@ const SortPanel = props => {
   };
 
   return (
-    <div className="controls__panel">
-      <button
-        className="filter__button"
-        onClick={() => props.displayInformation()}
-      >
-        Data
-      </button>
-      <select
-        className="sort__select"
+    <ControlPanel>
+      <BasicButton onClick={() => props.displayInformation()}>Data</BasicButton>
+      <SelectField
         value={selectedSortType}
         onChange={e => setSortString(e.target.value)}
       >
         {sortTypes.map((item, index) => (
-          <option className="sort__option" key={index} value={item}>
+          <SelectOption key={index} value={item}>
             {item}
-          </option>
+          </SelectOption>
         ))}
-      </select>
-      <select
-        className="sort__select"
+      </SelectField>
+      <SelectField
         value={selectedSortBy}
         onChange={e => setSortBy(e.target.value)}
       >
         {sortDirection.map((item, index) => (
-          <option className="sort__option" key={index} value={item}>
+          <SelectOption key={index} value={item}>
             {item}
-          </option>
+          </SelectOption>
         ))}
-      </select>
-      <button className="filter__button" onClick={() => selectFilter()}>
-        Seřadit
-      </button>
-    </div>
+      </SelectField>
+      <BasicButton onClick={() => selectFilter()}>Seřadit</BasicButton>
+    </ControlPanel>
   );
 };
 
@@ -80,7 +77,4 @@ const mapDispatchToProps = {
   displayInformation
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(SortPanel);
+export default connect(mapStateToProps, mapDispatchToProps)(SortPanel);

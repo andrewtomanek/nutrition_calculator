@@ -1,4 +1,11 @@
 import React, { useState } from "react";
+import {
+  InputContainer,
+  InputBox,
+  InputField,
+  InputLabel,
+  SubmitButton
+} from "../../styles/elements.js";
 
 const FormLimit = props => {
   const [itemPrice, setPrice] = useState(200);
@@ -24,62 +31,53 @@ const FormLimit = props => {
   };
 
   return (
-    <div className="bar__panel">
-      <form className="input__box" onSubmit={handleSubmit}>
-        <label className="input__label">Cena</label>
-        <input
+    <InputContainer>
+      <InputBox onSubmit={handleSubmit}>
+        <InputLabel>Cena</InputLabel>
+        <InputField
           type="number"
-          className="input__field"
           value={itemPrice}
           onChange={e => setPrice(e.target.value)}
         />
-        <label className="input__label">Kalorie</label>
-        <input
+        <InputLabel>Kalorie</InputLabel>
+        <InputField
           type="number"
-          className="input__field"
           value={itemCalories}
           onChange={e => setCalories(e.target.value)}
         />
-        <label className="input__label">Tuky</label>
-        <input
+        <InputLabel>Tuky</InputLabel>
+        <InputField
           type="number"
-          className="input__field"
           value={itemFat}
           onChange={e => setFat(e.target.value)}
         />
-        <label className="input__label">Sacharidy</label>
-        <input
+        <InputLabel>Sacharidy</InputLabel>
+        <InputField
           type="number"
-          className="input__field"
           value={itemSacharidy}
           onChange={e => setSacharidy(e.target.value)}
         />
-        <label className="input__label">Vláknina</label>
-        <input
+        <InputLabel>Vláknina</InputLabel>
+        <InputField
           type="number"
-          className="input__field"
           value={itemFiber}
           onChange={e => setFiber(e.target.value)}
         />
-        <label className="input__label">Bílkoviny</label>
-        <input
+        <InputLabel>Bílkoviny</InputLabel>
+        <InputField
           type="number"
-          className="input__field"
           value={itemProtein}
           onChange={e => setProtein(e.target.value)}
         />
-        <label className="input__label">Množství</label>
-        <input
+        <InputLabel>Množství</InputLabel>
+        <InputField
           type="number"
-          className="input__field"
           value={itemQuantity}
           onChange={e => setQuantity(e.target.value)}
         />
-        <button className="submit__button" type="submit">
-          submit
-        </button>
-      </form>
-    </div>
+        <SubmitButton type="submit">Uložit</SubmitButton>
+      </InputBox>
+    </InputContainer>
   );
 };
 

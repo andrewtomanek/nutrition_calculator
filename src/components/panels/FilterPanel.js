@@ -3,8 +3,9 @@ import { connect } from "react-redux";
 import {
   applyFilterReset,
   applyFilterPicked
-} from "../store/actions/storageActions";
-import database from "../data/db";
+} from "../../store/actions/storageActions";
+import database from "../../data/db";
+import { BasicButton, ControlPanel } from "../../styles/elements.js";
 
 const FilterPanel = props => {
   const [unFiltered, setUnFiltered] = useState(database);
@@ -20,20 +21,11 @@ const FilterPanel = props => {
   };
 
   return (
-    <div className="controls__panel">
-      <button
-        className="filter__button"
-        onClick={() => resetFilter(props.foods)}
-      >
-        Reset
-      </button>
-      <button className="filter__button" onClick={() => filterPicked(true)}>
-        Označené
-      </button>
-      <button className="filter__button" onClick={() => filterPicked(false)}>
-        Ostatní
-      </button>
-    </div>
+    <ControlPanel>
+      <BasicButton onClick={() => resetFilter(props.foods)}>Reset</BasicButton>
+      <BasicButton onClick={() => filterPicked(true)}>Označené</BasicButton>
+      <BasicButton onClick={() => filterPicked(false)}>Ostatní</BasicButton>
+    </ControlPanel>
   );
 };
 
@@ -47,7 +39,4 @@ const mapDispatchToProps = {
   applyFilterPicked
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(FilterPanel);
+export default connect(mapStateToProps, mapDispatchToProps)(FilterPanel);

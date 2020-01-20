@@ -1,32 +1,66 @@
 import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { AuthContext } from "../auth/Auth.js";
+import { AuthButton } from "../styles/elements";
 import app from "../auth/base";
+import styled from "styled-components";
+
+const NavigationList = styled.ul`
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+`;
+
+const NavigationLink = styled.li`
+  margin: 0 1rem;
+  text-decoration: none;
+`;
+
+const AuthLink = styled(NavLink)`
+  padding: 0.2rem 0.5rem;
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: white;
+  background: var(--green);
+  border-radius: 0.5rem;
+  border: 0.1rem solid white;
+  &:hover {
+    color: var(--green);
+    background-color: white;
+  }
+  &.active {
+    color: white;
+    background: hsla(0, 80%, 80%, 1);
+  }
+`;
 
 const AuthControl = props => {
   const { currentUser } = useContext(AuthContext);
   if (currentUser) {
   }
   return (
-    <ul className="link__box">
+    <NavigationList>
       {!currentUser ? (
         <React.Fragment>
           {" "}
-          <li className="nav__link">
-            <NavLink to="/login">Přihlásit</NavLink>
-          </li>
-          <li className="nav__link">
-            <NavLink to="/signup">Registrace</NavLink>
-          </li>{" "}
+          <NavigationLink>
+            <AuthLink to="/login">Přihlásit</AuthLink>
+          </NavigationLink>
+          <NavigationLink>
+            <AuthLink to="/signup">Registrace</AuthLink>
+          </NavigationLink>{" "}
         </React.Fragment>
       ) : (
-        <li className="nav__link">
-          <button className="auth__button" onClick={() => app.auth().signOut()}>
-            Odhlásit
-          </button>{" "}
-        </li>
+        <NavigationLink>
+          <AuthButton onClick={() => app.auth().signOut()}>Odhlásit</AuthButton>{" "}
+        </NavigationLink>
       )}
-    </ul>
+    </NavigationList>
   );
 };
 

@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { CSSTransition } from "react-transition-group";
 import Navigation from "../components/Navigation";
-import Form from "../components/Form";
-import SwitcherPanel from "../components/SwitcherPanel";
-import SortPanel from "../components/SortPanel";
-import FilterPanel from "../components/FilterPanel";
-import MorePanel from "../components/MorePanel";
+import Form from "../components/forms/Form";
+import SwitcherPanel from "../components/panels/SwitcherPanel";
+import SortPanel from "../components/panels/SortPanel";
+import FilterPanel from "../components/panels/FilterPanel";
+import MorePanel from "../components/panels/MorePanel";
 import BarBox from "../components/BarBox";
 import ItemsList from "../components/ItemsList";
 import EmptyCart from "../components/EmptyCart";
@@ -22,7 +22,7 @@ import {
   deleteCartAction
 } from "../store/actions/storageActions";
 import database from "../data/db";
-import "../App.css";
+import { PageLayout, ControlsLayout } from "../styles/elements.js";
 
 const Home = props => {
   const [showFilters, setShowFilters] = useState(false);
@@ -86,7 +86,7 @@ const Home = props => {
   };
 
   return (
-    <div className="app">
+    <PageLayout>
       <Navigation />
       <SwitcherPanel
         cartControls={false}
@@ -108,10 +108,10 @@ const Home = props => {
         classNames="alert"
         unmountOnExit
       >
-        <div className="controls__box">
+        <ControlsLayout>
           <FilterPanel />
           <SortPanel />
-        </div>
+        </ControlsLayout>
       </CSSTransition>
       <BarBox showLimit={showLimit} />
       {props.foods && props.foods.length > 0 ? (
@@ -130,7 +130,7 @@ const Home = props => {
       )}
       <MorePanel displayMore={displayMore} />
       <Footer />
-    </div>
+    </PageLayout>
   );
 };
 

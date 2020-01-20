@@ -1,10 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { updateCalculateSum } from "../store/actions/storageActions";
-import FormLimit from "./FormLimit";
-import BarStripe from "./BarStripe";
+import FormLimit from "./forms/FormLimit";
+import BarStripe from "./panels/BarStripe";
 import { CSSTransition } from "react-transition-group";
-import "../App.css";
+import styled from "styled-components";
+
+const BarContainer = styled.div`
+  margin: 0;
+  padding: 0.2rem 0rem;
+  width: 95%;
+  background-color: hsla(54, 60%, 70%, 1);
+  border-radius: 0rem 0rem 0.3rem 0.3rem;
+`;
 
 const BarBox = props => {
   const [barData, setbarData] = useState([]);
@@ -79,7 +87,7 @@ const BarBox = props => {
   };
 
   return (
-    <div className="bar__panel">
+    <BarContainer>
       <CSSTransition
         in={props.showLimit}
         timeout={300}
@@ -92,7 +100,7 @@ const BarBox = props => {
       {barData.map((item, index) => (
 <BarStripe item={item} key={index}/>
       ))}
-    </div>
+    </BarContainer>
   );
 };
 

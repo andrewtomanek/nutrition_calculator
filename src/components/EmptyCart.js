@@ -1,15 +1,39 @@
 import React from "react";
+import { BasicButton} from "../styles/elements.js";
+import styled from "styled-components";
+
+const EmptyContainer = styled.div`
+  display: grid;
+  align-content: center;
+  justify-content: center;
+  background-color: var(--orange);
+  border-radius: 1rem;
+  padding: 1rem;
+  min-width: 90vw;
+  min-height: 20vh;
+`;
+
+const EmptyText = styled.p`
+  display: grid;
+  align-content: center;
+  justify-content: center;
+  background-color: var(--orange);
+  border-radius: 1rem;
+  padding: 1rem;
+  min-width: 90vw;
+  min-height: 20vh;
+`;
 
 export default function EmptyCart({ resetFilter, showResetButton }) {
   return (
-    <div className="empty__cart">
+    <EmptyContainer>
       {showResetButton ? (
-        <button className="filter__button" onClick={() => resetFilter()}>
+        <BasicButton onClick={() => resetFilter()}>
           Znovu
-        </button>
+        </BasicButton>
       ) : (
-        <p className="empty__text">Žádné položky</p>
+        <EmptyText>Žádné položky</EmptyText>
       )}
-    </div>
+    </EmptyContainer>
   );
 }

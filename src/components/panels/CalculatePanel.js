@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { applycalculateSum } from "../store/actions/storageActions";
-import database from "../data/db";
+import { applycalculateSum } from "../../store/actions/storageActions";
+import database from "../../data/db";
+import {BasicButton,ControlPanel,SelectField,SelectOption} from '../../styles/elements.js'
 
 const CalculatePanel = props => {
   const [sumTypes] = useState(Object.keys(database[0]));
@@ -18,22 +19,21 @@ const CalculatePanel = props => {
   };
 
   return (
-    <div className="controls__panel">
-      <button className="item__button" onClick={() => calculateSum()}>
+    <ControlPanel>
+      <BasicButton onClick={() => calculateSum()}>
         {sumResult !== 0 ? sumResult.toFixed(0) : "Spočítat"}
-      </button>
-      <select
-        className="sort__select"
+      </BasicButton>
+      <SelectField
         value={selectedSumType}
         onChange={e => setSelectedSumType(e.target.value)}
       >
         {sumTypes.map((item, index) => (
-          <option className="sort__option" key={index} value={item}>
+          <SelectOption key={index} value={item}>
             {item}
-          </option>
+          </SelectOption>
         ))}
-      </select>
-    </div>
+      </SelectField>
+    </ControlPanel>
   );
 };
 
@@ -47,7 +47,4 @@ const mapDispatchToProps = {
   applycalculateSum
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(CalculatePanel);
+export default connect(mapStateToProps, mapDispatchToProps)(CalculatePanel);

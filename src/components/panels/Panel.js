@@ -6,7 +6,9 @@ import {
   applyFilterWord,
   displayInformation
 } from "../store/redux";
-import database from "../data/db";
+import database from "../../data/db";
+import {BasicButton,ControlPanel,SelectField,SelectOption} from '../../styles/elements.js'
+import styled from "styled-components";
 
 const Panel = props => {
   const [unFiltered, setUnFiltered] = useState(database);
@@ -46,43 +48,42 @@ const Panel = props => {
   };
 
   return (
-    <div className="controls__panel">
-      <button className="item__button" onClick={() => resetFilter(props.foods)}>
+    <ControlPanel>
+      <BasicButton onClick={() => resetFilter(props.foods)}>
         Reset
-      </button>
-      <button className="item__button" onClick={() => filterPicked(true)}>
+      </BasicButton>
+      <BasicButton onClick={() => filterPicked(true)}>
         picked
-      </button>
-      <button className="item__button" onClick={() => filterPicked(false)}>
+      </BasicButton>
+      <BasicButton onClick={() => filterPicked(false)}>
         unpicked
-      </button>
-      <button className="item__button" onClick={() => selectFilter()}>
+      </BasicButton>
+      <BasicButton onClick={() => selectFilter()}>
         Sort
-      </button>
-      <button
-        className="item__button"
+      </BasicButton>
+      <BasicButton
         onClick={() => props.displayInformation()}
       >
         Info
-      </button>
-      <select
+      </BasicButton>
+      <SelectField
         value={selectedSortType}
         onChange={e => setSortString(e.target.value)}
       >
         {sortTypes.map((item, index) => (
-          <option key={index} value={item}>
+          <SelectOption key={index} value={item}>
             {item}
-          </option>
+          </SelectOption>
         ))}
-      </select>
-      <select value={selectedSortBy} onChange={e => setSortBy(e.target.value)}>
+      </SelectField>
+      <SelectField value={selectedSortBy} onChange={e => setSortBy(e.target.value)}>
         {sortDirection.map((item, index) => (
-          <option key={index} value={item}>
+          <SelectOption key={index} value={item}>
             {item}
-          </option>
+          </SelectOption>
         ))}
-      </select>
-    </div>
+      </SelectField>
+    </ControlPanel>
   );
 };
 
