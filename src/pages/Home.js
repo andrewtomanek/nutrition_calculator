@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { CSSTransition } from "react-transition-group";
-import Navigation from "../components/Navigation";
 import Form from "../components/forms/Form";
 import SwitcherPanel from "../components/panels/SwitcherPanel";
 import SortPanel from "../components/panels/SortPanel";
@@ -14,6 +13,7 @@ import { connect } from "react-redux";
 import {
   initInventory,
   applyFilterReset,
+  applyCartRefresh,
   addToCart,
   fillStorage,
   updateQuantity,
@@ -31,19 +31,24 @@ const Home = props => {
   let [dataIndex, setDataIndex] = useState(4);
 
   useEffect(() => {
-    let data = sessionStorage.getItem("inventory");
+    let inventory = sessionStorage.getItem("inventory");
+    let cartSession = sessionStorage.getItem("cart");
     let initialArray = [];
     for (let i = 0; i < 5; i++) {
       initialArray.push(database[i]);
     }
-    console.log(JSON.stringify(props.foods) === JSON.stringify(initialArray));
-    if (JSON.stringify(props.foods) === JSON.stringify(initialArray) && data) {
-      props.applyFilterReset(JSON.parse(data));
+    if (
+      JSON.stringify(props.foods) === JSON.stringify(initialArray) &&
+      inventory
+    ) {
+      props.applyFilterReset(JSON.parse(inventory));
+      if (cartSession) props.applyCartRefresh(JSON.parse(cartSession));
     }
   }, []);
 
   useEffect(() => {
     sessionStorage.setItem("inventory", JSON.stringify(props.foods));
+    sessionStorage.setItem("cart", JSON.stringify(props.cart));
   });
 
   const displayMore = () => {
@@ -99,7 +104,6 @@ const Home = props => {
 
   return (
     <PageLayout>
-      <Navigation />
       <SwitcherPanel
         cartControls={false}
         revealFilters={revealFilters}
@@ -155,6 +159,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = {
   initInventory,
   applyFilterReset,
+  applyCartRefresh,
   addToCart,
   toggleFoodComplete,
   updateQuantity,

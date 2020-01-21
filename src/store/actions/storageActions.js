@@ -122,6 +122,13 @@ export const applyFilterReset = filter => {
   };
 };
 
+export const applyCartRefresh = oldCart => {
+  return {
+    type: actionTypes.APPLY_CART_REFRESH,
+    payload: oldCart
+  };
+};
+
 export const applyFilterPicked = filter => {
   return {
     type: actionTypes.APPLY_FILTER_PICKED,

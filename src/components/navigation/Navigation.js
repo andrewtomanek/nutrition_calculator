@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import DatabaseControl from "./DatabaseControl.js";
-import AuthControl from "./AuthControl.js";
-import { AuthContext } from "../auth/Auth.js";
+import AuthControl from "../AuthControl.js";
+import { AuthContext } from "../../auth/Auth.js";
 import styled from "styled-components";
 
 const MainNavigation = styled.nav`

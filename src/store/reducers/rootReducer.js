@@ -1,7 +1,7 @@
 import * as actionTypes from "../actions/actionTypes";
 import database from "../../data/db";
 
-let initialArray= [];
+let initialArray = [];
 for (let i = 0; i < 5; i++) {
   initialArray.push(database[i]);
 }
@@ -101,6 +101,11 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         foods: [...action.payload]
+      };
+    case actionTypes.APPLY_CART_REFRESH:
+      return {
+        ...state,
+        cart: [...action.payload]
       };
     case actionTypes.APPLY_FILTER_PICKED:
       return {
