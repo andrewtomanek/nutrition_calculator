@@ -31,8 +31,20 @@ const Home = props => {
   let [dataIndex, setDataIndex] = useState(4);
 
   useEffect(() => {
-    displayMore();
+    let data = sessionStorage.getItem("inventory");
+    let initialArray = [];
+    for (let i = 0; i < 5; i++) {
+      initialArray.push(database[i]);
+    }
+    console.log(JSON.stringify(props.foods) === JSON.stringify(initialArray));
+    if (JSON.stringify(props.foods) === JSON.stringify(initialArray) && data) {
+      props.applyFilterReset(JSON.parse(data));
+    }
   }, []);
+
+  useEffect(() => {
+    sessionStorage.setItem("inventory", JSON.stringify(props.foods));
+  });
 
   const displayMore = () => {
     if (!props.foods) return;

@@ -23,7 +23,6 @@ const Panel = props => {
   };
   const filterPicked = sortString => {
     if (unFiltered < props.foods) setUnFiltered(props.foods);
-    console.log(props.foods);
     props.applyFilterPicked(sortString);
   };
   const selectFilter = () => {

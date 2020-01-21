@@ -1,7 +1,13 @@
 import * as actionTypes from "../actions/actionTypes";
+import database from "../../data/db";
+
+let initialArray= [];
+for (let i = 0; i < 5; i++) {
+  initialArray.push(database[i]);
+}
 
 const initialState = {
-  foods: [],
+  foods: initialArray,
   cart: [],
   allItemSum: null,
   updateItemSum: []
