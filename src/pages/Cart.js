@@ -13,7 +13,7 @@ import {
   applyFilterReset,
   applyCartRefresh
 } from "../store/actions/storageActions";
-import database from "../data/db";
+import database from "../data/db.json";
 import { PageLayout } from "../styles/elements.js";
 
 const Cart = props => {

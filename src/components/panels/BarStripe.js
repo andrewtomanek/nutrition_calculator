@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import styled from "styled-components";
 
 const BarContainer = styled.div`
@@ -45,29 +45,24 @@ const BarLabel = styled.p`
 }
 `;
 
-
-
-export default function BarStripe({item}) {
-    return (
-        <BarContainer>
-        <ColorBar
-          style={{
-            width: (item[1] / item[2]) * 100 + "%",
-            background: `hsla(${
-              ((item[1] / item[2]) * 100).toFixed(0) < 100
-                ? 100 - ((item[1] / item[2]) * 100).toFixed(0)
-                : 0
-            },  70%, 50%, 1)`
-          }}
-        />
-        <BarTextBox>
-          <BarLabel>{item[0]}</BarLabel>
-          <BarLabel>{item[1].toFixed(0)}</BarLabel>{" "}
-          <BarLabel>{item[2]}</BarLabel>
-          <BarLabel>
-            {((item[1] / item[2]) * 100).toFixed(0) + "%"}
-          </BarLabel>
-        </BarTextBox>
-      </BarContainer>
-    )
+export default function BarStripe({ item }) {
+  return (
+    <BarContainer>
+      <ColorBar
+        style={{
+          width: (item[1] / item[2]) * 100 + "%",
+          background: `hsla(${
+            ((item[1] / item[2]) * 100).toFixed(0) < 100
+              ? 100 - ((item[1] / item[2]) * 100).toFixed(0)
+              : 0
+          },  70%, 50%, 1)`
+        }}
+      />
+      <BarTextBox>
+        <BarLabel>{item[0]}</BarLabel>
+        <BarLabel>{item[1].toFixed(0)}</BarLabel> <BarLabel>{item[2]}</BarLabel>
+        <BarLabel>{((item[1] / item[2]) * 100).toFixed(0) + "%"}</BarLabel>
+      </BarTextBox>
+    </BarContainer>
+  );
 }

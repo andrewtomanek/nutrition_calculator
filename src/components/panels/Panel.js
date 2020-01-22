@@ -6,14 +6,21 @@ import {
   applyFilterWord,
   displayInformation
 } from "../store/redux";
-import database from "../../data/db";
+import database from "../../data/db.json";
 import {BasicButton,ControlPanel,SelectField,SelectOption} from '../../styles/elements.js'
-import styled from "styled-components";
 
 const Panel = props => {
   const [unFiltered, setUnFiltered] = useState(database);
-  const [sortTypes, setSortTypes] = useState(Object.keys(database[0]));
-  const [sortDirection, setDirection] = useState(["low", "high"]);
+  const [sortTypes] = useState([
+    "bílkoviny",
+    "cena",
+    "kalorie",
+    "množství",
+    "sacharidy",
+    "tuky",
+    "vláknina"
+  ]);
+  const [sortDirection] = useState(["low", "high"]);
   const [selectedSortType, setSortString] = useState(1);
   const [selectedSortBy, setSortBy] = useState(1);
 

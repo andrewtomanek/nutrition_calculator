@@ -4,7 +4,6 @@ import {
   applyFilterWord,
   displayInformation
 } from "../../store/actions/storageActions";
-import database from "../../data/db";
 import {
   BasicButton,
   ControlPanel,
@@ -13,7 +12,15 @@ import {
 } from "../../styles/elements.js";
 
 const SortPanel = props => {
-  const [sortTypes] = useState(Object.keys(database[0]));
+  const [sortTypes] = useState([
+    "bílkoviny",
+    "cena",
+    "kalorie",
+    "množství",
+    "sacharidy",
+    "tuky",
+    "vláknina"
+  ]);
   const [sortDirection] = useState(["Nejnižší", "Nejvyšší"]);
   const [selectedSortType, setSortString] = useState("kalorie");
   const [selectedSortBy, setSortBy] = useState("Nejvyšší");

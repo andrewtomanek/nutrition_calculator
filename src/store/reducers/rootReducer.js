@@ -1,5 +1,5 @@
 import * as actionTypes from "../actions/actionTypes";
-import database from "../../data/db";
+import database from "../../data/db.json";
 
 let initialArray = [];
 for (let i = 0; i < 5; i++) {

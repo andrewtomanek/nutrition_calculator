@@ -17,10 +17,10 @@ const BarContainer = styled.div`
 const BarBox = props => {
   const [barData, setbarData] = useState([]);
   const [barInitValues, setBarInitValues] = useState({
-    bílkoviny: 56,
-    cena: 200,
-    kalorie: 2000,
     množství: 10,
+    cena: 200,
+    bílkoviny: 56,
+    kalorie: 2000,
     sacharidy: 130,
     tuky: 70,
     vláknina: 38
@@ -30,13 +30,13 @@ const BarBox = props => {
     let oldValue = 0;
     let initCart = [
       {
-        bílkoviny: 0,
-        cena: 0,
         id: 0,
         image: "",
-        kalorie: 0,
-        množství: 0,
         picked: false,
+        množství: 0,
+        cena: 0,
+        bílkoviny: 0,
+        kalorie: 0,
         sacharidy: 0,
         tuky: 0,
         vláknina: 0
