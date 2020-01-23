@@ -1,12 +1,24 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import { applycalculateSum } from "../../store/actions/storageActions";
-import database from "../../data/db";
-import {BasicButton,ControlPanel,SelectField,SelectOption} from '../../styles/elements.js'
+import {
+  BasicButton,
+  ControlPanel,
+  SelectField,
+  SelectOption
+} from "../../styles/elements.js";
 
 const CalculatePanel = props => {
-  const [sumTypes] = useState(Object.keys(database[0]));
-  const [selectedSumType, setSelectedSumType] = useState(1);
+  const [sumTypes] = useState([
+    "bílkoviny",
+    "cena",
+    "kalorie",
+    "množství",
+    "sacharidy",
+    "tuky",
+    "vláknina"
+  ]);
+  const [selectedSumType, setSelectedSumType] = useState("bílkoviny");
   const [sumResult, setSumResult] = useState(0);
 
   const calculateSum = () => {

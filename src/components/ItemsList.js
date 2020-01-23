@@ -15,7 +15,12 @@ const ListContainer = styled.section`
   border-radius: 0.5rem;
   padding: 1rem;
   max-width: 90vw;
-  @media all and (max-width: 1980px) {
+  @media all and (max-width: 2380px) {
+    grid-gap: 1rem 0.5rem;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(auto-fill, minmax(50vh, 1fr));
+  }
+    @media all and (max-width: 1980px) {
     grid-gap: 1rem 0.5rem;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(auto-fill, minmax(60vh, 1fr));

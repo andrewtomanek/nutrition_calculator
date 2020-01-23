@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import Navigation from "../components/Navigation";
+import React, { useState, useEffect } from "react";
 import SwitcherPanel from "../components/panels/SwitcherPanel";
 import ItemsList from "../components/ItemsList";
 import BarBox from "../components/BarBox";
@@ -10,12 +9,36 @@ import {
   addToStorage,
   toggleCartComplete,
   deleteCartAction,
-  deleteStorageAction
+  deleteStorageAction,
+  applyFilterReset,
+  applyCartRefresh
 } from "../store/actions/storageActions";
-import { PageLayout} from "../styles/elements.js";
+import database from "../data/db.json";
+import { PageLayout } from "../styles/elements.js";
 
 const Cart = props => {
   const [showLimit, setShowLimit] = useState(false);
+
+  useEffect(() => {
+    let inventory = sessionStorage.getItem("inventory");
+    let cartSession = sessionStorage.getItem("cart");
+    let initialArray = [];
+    for (let i = 0; i < 5; i++) {
+      initialArray.push(database[i]);
+    }
+    if (
+      JSON.stringify(props.foods) === JSON.stringify(initialArray) &&
+      inventory
+    ) {
+      props.applyFilterReset(JSON.parse(inventory));
+      if (cartSession) props.applyCartRefresh(JSON.parse(cartSession));
+    }
+  }, []);
+
+  useEffect(() => {
+    sessionStorage.setItem("inventory", JSON.stringify(props.foods));
+    sessionStorage.setItem("cart", JSON.stringify(props.cart));
+  });
 
   const revealLimit = () => {
     setShowLimit(!showLimit);
@@ -36,7 +59,6 @@ const Cart = props => {
 
   return (
     <PageLayout>
-      <Navigation />
       <SwitcherPanel revealLimit={revealLimit} cartControls />
       <BarBox showLimit={showLimit} />
       {props.cart.length > 0 ? (
@@ -51,7 +73,7 @@ const Cart = props => {
         <EmptyCart showResetButton={false} />
       )}
       <Footer />
-      </PageLayout>
+    </PageLayout>
   );
 };
 
@@ -66,7 +88,9 @@ const mapDispatchToProps = {
   addToStorage,
   toggleCartComplete,
   deleteCartAction,
-  deleteStorageAction
+  deleteStorageAction,
+  applyFilterReset,
+  applyCartRefresh
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Cart);

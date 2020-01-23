@@ -1,9 +1,9 @@
 import React, { useEffect, useState, useContext } from "react";
 import { connect } from "react-redux";
-import { initInventory, saveToStore } from "../store/actions/storageActions";
-import { AuthContext } from "../auth/Auth.js";
-import app from "../auth/base.js";
-import { AuthButton } from "../styles/elements";
+import { initInventory, saveToStore } from "../../store/actions/storageActions";
+import { AuthContext } from "../../auth/Auth.js";
+import app from "../../auth/base.js";
+import { AuthButton } from "../../styles/elements";
 import styled from "styled-components";
 
 const DataContainer = styled.div`

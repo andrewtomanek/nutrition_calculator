@@ -4,7 +4,7 @@ import {
   applyFilterReset,
   applyFilterPicked
 } from "../../store/actions/storageActions";
-import database from "../../data/db";
+import database from "../../data/db.json";
 import { BasicButton, ControlPanel } from "../../styles/elements.js";
 
 const FilterPanel = props => {
@@ -16,7 +16,6 @@ const FilterPanel = props => {
   };
   const filterPicked = sortString => {
     if (unFiltered < props.foods) setUnFiltered(props.foods);
-    console.log(props.foods);
     props.applyFilterPicked(sortString);
   };
 

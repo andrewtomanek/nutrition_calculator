@@ -184,7 +184,7 @@ grid-auto-flow: row;
 justify-items: center;
 margin: 0;
 padding: 0;
-min-height: 100vh;
+min-height: 80vh;
 overflow: hidden;
 @media all and (max-width: 480px) {
     font-size: 1.1rem;
