@@ -3,7 +3,7 @@ import app from "../../auth/base.js";
 import { withRouter } from "react-router";
 import { AuthContext } from "../../auth/Auth.js";
 import validateAuth from "../../auth/validateAuth";
-import styled from 'styled-components'
+import styled from "styled-components";
 
 const LoginForm = styled.form`
   display: grid;
@@ -25,7 +25,7 @@ const ErrorSpan = styled.span`
   font-size: 0.9rem;
   font-weight: 400;
   margin: 0;
-  opacity:0;
+  opacity: 0;
 `;
 
 const LoginButton = styled.button`
@@ -42,18 +42,18 @@ const LoginButton = styled.button`
   :disabled {
     animation: none;
     border: 0.2rem solid grey;
-  background-color: white;
-  color: grey;
-  cursor: not-allowed;
+    background-color: white;
+    color: grey;
+    cursor: not-allowed;
   }
   &:hover {
     color: var(--orange);
-  border: 0.2rem solid var(--orange);
-  background-color: white;
+    border: 0.2rem solid var(--orange);
+    background-color: white;
   }
 `;
 
-const AuthForm=({ history,register }) => {
+const AuthForm = ({ history, register }) => {
   const [values, setValues] = useState({
     email: "",
     password: ""
@@ -86,7 +86,6 @@ const AuthForm=({ history,register }) => {
     if (isSubmitting) {
       const noErrors = Object.keys(errors).length === 0;
       if (noErrors) {
-        console.log("authenticated!", values.email, values.password);
         setSubmitting(false);
       } else {
         setSubmitting(false);
@@ -103,10 +102,10 @@ const AuthForm=({ history,register }) => {
   const handleSubmit = event => {
     event.preventDefault();
     setSubmitting(true);
-    if(register) {
-        signUp(event);
+    if (register) {
+      signUp(event);
     } else {
-        logIn(event);
+      logIn(event);
     }
   };
 
@@ -127,43 +126,49 @@ const AuthForm=({ history,register }) => {
     setErrors(validationErrors);
   };
 
-    return (
-        <LoginForm onSubmit={handleSubmit}>
-        <input
-          onChange={handleChange}
-          onBlur={handleBlur}
-          name="email"
-          value={values.email}
-          className={(errors.email && "error__input") || "login__input"}
-          autoComplete="off"
-          placeholder="E-mail"
-        />
-        {errors.email ? <ErrorText>{errors.email}</ErrorText>: <ErrorSpan>noErrors</ErrorSpan>  }
-        <input
-          onChange={handleChange}
-          onBlur={handleBlur}
-          value={values.password}
-          className={(errors.password && "error__input") || "login__input"}
-          name="password"
-          type="password"
-          placeholder="Heslo"
-        />
-        {errors.password ? <ErrorText>{errors.password}</ErrorText>: <ErrorSpan>noErrors</ErrorSpan>  }
-        <LoginButton
-          disabled={
-            !(
-              Object.keys(errors).length === 0 &&
-              !(values.email === "" && values.password === "")
-            )
-          }
-          type="submit"
-        >
-{register ? "Registrovat" : "Přihlásit"}
-        </LoginButton>
-        </LoginForm>
+  return (
+    <LoginForm onSubmit={handleSubmit}>
+      <input
+        onChange={handleChange}
+        onBlur={handleBlur}
+        name="email"
+        value={values.email}
+        className={(errors.email && "error__input") || "login__input"}
+        autoComplete="off"
+        placeholder="E-mail"
+      />
+      {errors.email ? (
+        <ErrorText>{errors.email}</ErrorText>
+      ) : (
+        <ErrorSpan>noErrors</ErrorSpan>
+      )}
+      <input
+        onChange={handleChange}
+        onBlur={handleBlur}
+        value={values.password}
+        className={(errors.password && "error__input") || "login__input"}
+        name="password"
+        type="password"
+        placeholder="Heslo"
+      />
+      {errors.password ? (
+        <ErrorText>{errors.password}</ErrorText>
+      ) : (
+        <ErrorSpan>noErrors</ErrorSpan>
+      )}
+      <LoginButton
+        disabled={
+          !(
+            Object.keys(errors).length === 0 &&
+            !(values.email === "" && values.password === "")
+          )
+        }
+        type="submit"
+      >
+        {register ? "Registrovat" : "Přihlásit"}
+      </LoginButton>
+    </LoginForm>
+  );
+};
 
-    )
-}
-
-
-export default withRouter(AuthForm)
+export default withRouter(AuthForm);
