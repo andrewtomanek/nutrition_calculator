@@ -25,6 +25,7 @@ Pick predefined or create your own foods.<br /> Set your healthy daily calory li
 - [React-Router](https://reacttraining.com/react-router/)
 - [Redux-saga](https://redux-saga.js.org)
 - [react-transition-group](https://github.com/reactjs/react-transition-group)
+- [styled-components](https://styled-components.com/)
 - [Axios](https://github.com/axios/axios)
 - [Firebase](https://firebase.google.com)
 
@@ -55,4 +56,3 @@ andrewtomanek - andrewtomanek@gmail.com
 ## License
 
 Distributed under the MIT License.
-
