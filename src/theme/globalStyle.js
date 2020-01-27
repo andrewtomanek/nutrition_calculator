@@ -78,6 +78,25 @@ font-family: 'Alegreya Sans',monospace;}
   transition: opacity 300ms, transform 300ms;
 }
 
+.anim-left-enter {
+  opacity: 0;
+  transform: translateX(-100vw);
+}
+.anim-left-enter-active {
+  opacity: 1;
+  transform: translateX(0rem);
+  transition: all 500ms ease-in-out;
+}
+
+.anim-right-enter {
+  opacity: 0;
+  transform: translateX(100vw);
+}
+.anim-right-enter-active {
+  opacity: 1;
+  transform: translateX(0rem);
+  transition: all 500ms ease-in-out;
+}
 
 @keyframes floating-text {
   0% {

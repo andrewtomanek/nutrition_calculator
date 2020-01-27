@@ -14,10 +14,12 @@ import {
   applyCartRefresh
 } from "../store/actions/storageActions";
 import database from "../data/db.json";
+import { CSSTransition } from "react-transition-group";
 import { PageLayout } from "../styles/elements.js";
 
 const Cart = props => {
   const [showLimit, setShowLimit] = useState(false);
+  const [inProp, setInProp] = useState(false);
 
   useEffect(() => {
     let inventory = sessionStorage.getItem("inventory");
@@ -33,6 +35,7 @@ const Cart = props => {
       props.applyFilterReset(JSON.parse(inventory));
       if (cartSession) props.applyCartRefresh(JSON.parse(cartSession));
     }
+    setInProp(true);
   }, []);
 
   useEffect(() => {
@@ -58,22 +61,31 @@ const Cart = props => {
   };
 
   return (
-    <PageLayout>
-      <SwitcherPanel revealLimit={revealLimit} cartControls />
-      <BarBox showLimit={showLimit} />
-      {props.cart.length > 0 ? (
-        <ItemsList
-          foods={props.cart}
-          moveToStorage={moveToStorage}
-          removeItem={removeItem}
-          pickItem={pickItem}
-          basicButtons={false}
-        />
-      ) : (
-        <EmptyCart showResetButton={false} />
-      )}
-      <Footer />
-    </PageLayout>
+    <CSSTransition
+      component={null}
+      in={inProp}
+      timeout={500}
+      classNames="anim-left"
+      mountOnEnter
+      unmountOnExit
+    >
+      <PageLayout>
+        <SwitcherPanel revealLimit={revealLimit} cartControls />
+        <BarBox showLimit={showLimit} />
+        {props.cart.length > 0 ? (
+          <ItemsList
+            foods={props.cart}
+            moveToStorage={moveToStorage}
+            removeItem={removeItem}
+            pickItem={pickItem}
+            basicButtons={false}
+          />
+        ) : (
+          <EmptyCart showResetButton={false} />
+        )}
+        <Footer />
+      </PageLayout>
+    </CSSTransition>
   );
 };
 

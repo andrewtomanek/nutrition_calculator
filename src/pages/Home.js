@@ -28,6 +28,7 @@ const Home = props => {
   const [showFilters, setShowFilters] = useState(false);
   const [showInput, setShowInput] = useState(false);
   const [showLimit, setShowLimit] = useState(false);
+  const [inProp, setInProp] = useState(false);
   let [dataIndex, setDataIndex] = useState(4);
 
   useEffect(() => {
@@ -44,6 +45,7 @@ const Home = props => {
       props.applyFilterReset(JSON.parse(inventory));
       if (cartSession) props.applyCartRefresh(JSON.parse(cartSession));
     }
+    setInProp(true);
   }, []);
 
   useEffect(() => {
@@ -103,50 +105,59 @@ const Home = props => {
   };
 
   return (
-    <PageLayout>
-      <SwitcherPanel
-        cartControls={false}
-        revealFilters={revealFilters}
-        revealInput={revealInput}
-        revealLimit={revealLimit}
-      />
-      <CSSTransition
-        in={showInput}
-        timeout={300}
-        classNames="alert"
-        unmountOnExit
-      >
-        <Form />
-      </CSSTransition>
-      <CSSTransition
-        in={showFilters}
-        timeout={300}
-        classNames="alert"
-        unmountOnExit
-      >
-        <ControlsLayout>
-          <FilterPanel />
-          <SortPanel />
-        </ControlsLayout>
-      </CSSTransition>
-      <BarBox showLimit={showLimit} />
-      {props.foods && props.foods.length > 0 ? (
-        <ItemsList
-          foods={props.foods}
-          minusToCart={minusToCart}
-          updateNumber={updateNumber}
-          plusToCart={plusToCart}
-          moveToCart={moveToCart}
-          pickItem={pickItem}
-          removeFromStorage={removeFromStorage}
-          basicButtons
+    <CSSTransition
+      component={null}
+      in={inProp}
+      timeout={500}
+      classNames="anim-right"
+      mountOnEnter
+      unmountOnExit
+    >
+      <PageLayout>
+        <SwitcherPanel
+          cartControls={false}
+          revealFilters={revealFilters}
+          revealInput={revealInput}
+          revealLimit={revealLimit}
         />
-      ) : (
-        <EmptyCart resetFilter={resetFilter} showResetButton />
-      )}
-      <MorePanel displayMore={displayMore} />
-      <Footer />
-    </PageLayout>
+        <CSSTransition
+          in={showInput}
+          timeout={300}
+          classNames="alert"
+          unmountOnExit
+        >
+          <Form />
+        </CSSTransition>
+        <CSSTransition
+          in={showFilters}
+          timeout={300}
+          classNames="alert"
+          unmountOnExit
+        >
+          <ControlsLayout>
+            <FilterPanel />
+            <SortPanel />
+          </ControlsLayout>
+        </CSSTransition>
+        <BarBox showLimit={showLimit} />
+        {props.foods && props.foods.length > 0 ? (
+          <ItemsList
+            foods={props.foods}
+            minusToCart={minusToCart}
+            updateNumber={updateNumber}
+            plusToCart={plusToCart}
+            moveToCart={moveToCart}
+            pickItem={pickItem}
+            removeFromStorage={removeFromStorage}
+            basicButtons
+          />
+        ) : (
+          <EmptyCart resetFilter={resetFilter} showResetButton />
+        )}
+        <MorePanel displayMore={displayMore} />
+        <Footer />
+      </PageLayout>
+    </CSSTransition>
   );
 };
 
