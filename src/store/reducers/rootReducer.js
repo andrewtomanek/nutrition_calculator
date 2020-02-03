@@ -2,6 +2,7 @@ import * as actionTypes from "../actions/actionTypes";
 import database from "../../data/db.json";
 
 let inventory = sessionStorage.getItem("inventory");
+let cartSession = sessionStorage.getItem("cart");
 
 let initialArray;
 if (inventory) {
@@ -13,9 +14,16 @@ if (inventory) {
   }
 }
 
+let initialCart;
+if (cartSession) {
+  initialCart = JSON.parse(cartSession);
+} else {
+  initialCart = [];
+}
+
 const initialState = {
   foods: initialArray,
-  cart: [],
+  cart: initialCart,
   allItemSum: null,
   updateItemSum: []
 };
