@@ -1,9 +1,16 @@
 import * as actionTypes from "../actions/actionTypes";
 import database from "../../data/db.json";
 
-let initialArray = [];
-for (let i = 0; i < 5; i++) {
-  initialArray.push(database[i]);
+let inventory = sessionStorage.getItem("inventory");
+
+let initialArray;
+if (inventory) {
+  initialArray = JSON.parse(inventory);
+} else {
+  initialArray = [];
+  for (let i = 0; i < 5; i++) {
+    initialArray.push(database[i]);
+  }
 }
 
 const initialState = {
