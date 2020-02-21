@@ -56,6 +56,7 @@ const Home = props => {
   const displayMore = () => {
     if (!props.foods) return;
     if (database.length < dataIndex) return;
+    if (dataIndex <= 4) dataIndex = 8;
     setDataIndex(dataIndex + 4);
     let initialArray = database;
     for (let i = 0; i < dataIndex; i++) {
