@@ -9,7 +9,7 @@ const SwitchPanel = styled.div`
   grid-auto-flow: column;
   justify-items: space-around;
   padding: 0.5rem 0.3rem;
-  background: hsla(24, 90%, 60%, 1);
+  background: hsla(40,80%,70%,1);
 `;
 
 export default function SwitcherPanel(props) {

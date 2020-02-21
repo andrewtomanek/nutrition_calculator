@@ -78,7 +78,8 @@ export const InputContainer = styled.div`
   justify-items: center;
   justify-content: center;
   padding: 0.1rem 0.3rem;
-  background-color: hsla(40, 90%, 50%, 1);
+  background: hsla(40,80%,70%,1);
+  border-radius: 0.5rem;
   width: 95%;
 `;
 
