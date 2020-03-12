@@ -7,6 +7,7 @@ export const BasicButton = styled.button`
   font-weight: 900;
   background-color: var(--green);
   color: #fff;
+  cursor: pointer;
   z-index: 4;
   transition: all 200ms cubic-bezier(0.215, 0.61, 0.355, 1);
   &:hover {
@@ -60,6 +61,7 @@ export const SelectField = styled.select`
   font-weight: 900;
   background-color: var(--green);
   color: #fff;
+  cursor: pointer;
 `;
 
 export const SelectOption = styled.option`
@@ -70,6 +72,7 @@ export const SelectOption = styled.option`
   font-weight: 900;
   color: var(--green);
   background-color: #fff;
+  cursor: pointer;
 `;
 
 export const InputContainer = styled.div`
@@ -78,7 +81,7 @@ export const InputContainer = styled.div`
   justify-items: center;
   justify-content: center;
   padding: 0.1rem 0.3rem;
-  background: hsla(40,80%,70%,1);
+  background: hsla(40, 80%, 70%, 1);
   border-radius: 0.5rem;
   width: 95%;
 `;
@@ -92,15 +95,14 @@ export const InputBox = styled.form`
   align-content: space-around;
   justify-content: center;
   padding: 0.1rem 0.3rem;
-  background-color: hsla(40, 90%, 50%, 1);
 `;
 
 export const InputField = styled.input`
-  width: 40%;
   margin: 0;
   padding: 0.1rem 0.3rem;
   font-size: 1rem;
   font-weight: 600;
+  text-align:center;
   color: hsla(70, 30%, 30%, 1);
   background-color: #fff;
 `;
@@ -145,26 +147,27 @@ export const SubmitButton = styled.button`
   font-weight: 900;
   background-color: var(--green);
   color: #fff;
+  cursor: pointer;
 `;
 
 export const AuthButton = styled.button`
-padding: 0.2rem 0.5rem;
-font-size: 1rem;
-font-weight: 800;
-color: white;
-background: var(--green);
-border-radius: 0.5rem;
-border: 0.1rem solid white;
-cursor: pointer;
-transition: all 200ms cubic-bezier(0.215, 0.61, 0.355, 1);
-&:hover {
-  color: var(--green);
-  background-color: white;
-}
-@media all and (max-width: 480px) {
-  padding: 0rem 0.5rem;
-  font-size: 2rem;
-}
+  padding: 0.2rem 0.5rem;
+  font-size: 1rem;
+  font-weight: 800;
+  color: white;
+  background: var(--green);
+  border-radius: 0.5rem;
+  border: 0.1rem solid white;
+  cursor: pointer;
+  transition: all 200ms cubic-bezier(0.215, 0.61, 0.355, 1);
+  &:hover {
+    color: var(--green);
+    background-color: white;
+  }
+  @media all and (max-width: 480px) {
+    padding: 0rem 0.5rem;
+    font-size: 2rem;
+  }
 `;
 
 export const StyledLink = styled(NavLink)`
@@ -180,14 +183,14 @@ export const StyledLink = styled(NavLink)`
 `;
 
 export const PageLayout = styled.div`
-display: grid;
-grid-auto-flow: row;
-justify-items: center;
-margin: 0;
-padding: 0;
-min-height: 80vh;
-overflow: hidden;
-@media all and (max-width: 480px) {
+  display: grid;
+  grid-auto-flow: row;
+  justify-items: center;
+  margin: 0;
+  padding: 0;
+  min-height: 80vh;
+  overflow: hidden;
+  @media all and (max-width: 480px) {
     font-size: 1.1rem;
   }
 `;
@@ -203,8 +206,8 @@ export const ControlsLayout = styled.div`
   @media all and (max-width: 736px) {
     grid-auto-flow: row;
     justify-items: space-around;
-  } 
-   @media all and (max-width: 480px) {
+  }
+  @media all and (max-width: 480px) {
     grid-auto-flow: row;
     justify-items: space-around;
   }

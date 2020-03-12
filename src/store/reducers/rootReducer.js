@@ -1,8 +1,8 @@
 import * as actionTypes from "../actions/actionTypes";
 import database from "../../data/db.json";
 
-let inventory = sessionStorage.getItem("inventory");
-let cartSession = sessionStorage.getItem("cart");
+let inventory = localStorage.getItem("inventory");
+let cartSession = localStorage.getItem("cart");
 
 let initialArray;
 if (inventory) {

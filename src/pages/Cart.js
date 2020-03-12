@@ -22,8 +22,8 @@ const Cart = props => {
   const [inProp, setInProp] = useState(false);
 
   useEffect(() => {
-    let inventory = sessionStorage.getItem("inventory");
-    let cartSession = sessionStorage.getItem("cart");
+    let inventory = localStorage.getItem("inventory");
+    let cartSession = localStorage.getItem("cart");
     let initialArray = [];
     for (let i = 0; i < 5; i++) {
       initialArray.push(database[i]);
@@ -39,8 +39,8 @@ const Cart = props => {
   }, []);
 
   useEffect(() => {
-    sessionStorage.setItem("inventory", JSON.stringify(props.foods));
-    sessionStorage.setItem("cart", JSON.stringify(props.cart));
+    localStorage.setItem("inventory", JSON.stringify(props.foods));
+    localStorage.setItem("cart", JSON.stringify(props.cart));
   });
 
   const revealLimit = () => {
