@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from "styled-components";
 const GlobalStyle = createGlobalStyle`
 :root {
   --green: hsla(80, 60%, 60%, 1);
@@ -10,6 +10,7 @@ const GlobalStyle = createGlobalStyle`
 html {
   margin: 0;
   padding: 0;
+  scroll-behavior: smooth;
 }
 
 body {

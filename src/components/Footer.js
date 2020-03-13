@@ -1,7 +1,6 @@
 import React from "react";
-import { StyledLink } from "../styles/elements";
+import { StyledLink, BasicButton } from "../styles/elements";
 import styled from "styled-components";
-
 
 const FooterContainer = styled.footer`
   display: grid;
@@ -18,8 +17,8 @@ const FooterLayout = styled.div`
 `;
 
 const FooterContent = styled.div`
-    display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr;
   justify-items: center;
   justify-content: center;
@@ -28,7 +27,7 @@ const FooterContent = styled.div`
   padding: 0.2rem 0.3rem;
   @media all and (max-width: 480px) {
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
   }
 `;
 
@@ -44,19 +43,28 @@ const FooterLink = styled.a`
   border-radius: 1rem;
 `;
 
-const Footer = props => (
-  <FooterContainer>
-    <FooterLayout>
-      <FooterContent>
-        <StyledLink to="/">
-          Zdravá strava
-        </StyledLink>
-        <FooterLink href="mailto:andrewtomanek@gmail.com">
-          Kontakt
-        </FooterLink>
-      </FooterContent>
-    </FooterLayout>
-  </FooterContainer>
-);
+export const UpButton = styled(BasicButton)`
+  border: solid 0.2rem white;
+  border-radius:  2rem 2rem 0.1rem 0.1rem;
+  color:hsla(24, 70%, 50%, 1);
+`;
+
+const Footer = () => {
+  const moveToTop = () => {
+    window.scrollTo(0, 0);
+  };
+
+  return (
+    <FooterContainer>
+      <FooterLayout>
+        <FooterContent>
+          <StyledLink to="/">Zdravá strava</StyledLink>
+          <UpButton onClick={moveToTop}>&#x25B2;</UpButton>
+          <FooterLink href="mailto:andrewtomanek@gmail.com">Kontakt</FooterLink>
+        </FooterContent>
+      </FooterLayout>
+    </FooterContainer>
+  );
+};
 
 export default Footer;

@@ -14,9 +14,9 @@ const FilterPanel = props => {
     setUnFiltered(newArray);
     props.applyFilterReset(unFiltered);
   };
-  const filterPicked = sortString => {
+  const filterPicked = sortBool => {
     if (unFiltered < props.foods) setUnFiltered(props.foods);
-    props.applyFilterPicked(sortString);
+    props.applyFilterPicked(sortBool);
   };
 
   return (

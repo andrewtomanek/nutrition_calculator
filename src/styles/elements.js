@@ -46,6 +46,10 @@ export const RedButton = styled(BasicButton)`
   }
 `;
 
+export const SwitchButton = styled(BasicButton)`
+  border-radius: 1rem;
+`;
+
 export const ControlPanel = styled.div`
   display: grid;
   grid-auto-flow: column;
@@ -78,12 +82,14 @@ export const SelectOption = styled.option`
 export const InputContainer = styled.div`
   display: grid;
   align-items: center;
-  justify-items: center;
-  justify-content: center;
-  padding: 0.1rem 0.3rem;
+  padding: 0.4rem 0.3rem;
   background: hsla(40, 80%, 70%, 1);
   border-radius: 0.5rem;
   width: 95%;
+`;
+
+export const SwitchContainer = styled(InputContainer)`
+  background-color: hsla(40, 80%, 70%, 1);
 `;
 
 export const InputBox = styled.form`
@@ -102,7 +108,7 @@ export const InputField = styled.input`
   padding: 0.1rem 0.3rem;
   font-size: 1rem;
   font-weight: 600;
-  text-align:center;
+  text-align: center;
   color: hsla(70, 30%, 30%, 1);
   background-color: #fff;
 `;

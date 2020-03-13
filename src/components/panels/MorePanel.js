@@ -1,10 +1,12 @@
 import React from "react";
-import { BasicButton, InputContainer } from "../../styles/elements.js";
+import { SwitchButton, SwitchContainer } from "../../styles/elements.js";
 
 export default function MorePanel({ displayMore }) {
   return (
-    <InputContainer>
-      <BasicButton onClick={() => displayMore()}>Více</BasicButton>
-    </InputContainer>
+    <SwitchContainer>
+      <SwitchButton onClick={() => displayMore()}>
+        &#8595; Více&#8595;
+      </SwitchButton>
+    </SwitchContainer>
   );
 }

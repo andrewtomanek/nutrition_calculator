@@ -5,6 +5,7 @@ import SwitcherPanel from "../components/panels/SwitcherPanel";
 import SortPanel from "../components/panels/SortPanel";
 import FilterPanel from "../components/panels/FilterPanel";
 import MorePanel from "../components/panels/MorePanel";
+import HidePanel from "../components/panels/HidePanel";
 import BarBox from "../components/BarBox";
 import ItemsList from "../components/ItemsList";
 import EmptyCart from "../components/EmptyCart";
@@ -28,6 +29,7 @@ const Home = props => {
   const [showFilters, setShowFilters] = useState(false);
   const [showInput, setShowInput] = useState(false);
   const [showLimit, setShowLimit] = useState(false);
+  const [hideCards, setHideCards] = useState(true);
   const [inProp, setInProp] = useState(false);
   let [dataIndex, setDataIndex] = useState(4);
 
@@ -76,6 +78,10 @@ const Home = props => {
     setShowLimit(!showLimit);
   };
 
+  const toggleCards = () => {
+    setHideCards(!hideCards);
+  };
+
   const minusToCart = id => {
     props.deleteCartAction(id);
   };
@@ -102,7 +108,12 @@ const Home = props => {
   };
 
   const resetFilter = () => {
-    props.applyFilterReset(database);
+    let initialArray = [];
+    for (let i = 0; i < 5; i++) {
+      initialArray.push(database[i]);
+    }
+    localStorage.setItem("inventory", JSON.stringify(initialArray));
+    props.applyFilterReset(initialArray);
   };
 
   return (
@@ -141,21 +152,31 @@ const Home = props => {
           </ControlsLayout>
         </CSSTransition>
         <BarBox showLimit={showLimit} />
-        {props.foods && props.foods.length > 0 ? (
-          <ItemsList
-            foods={props.foods}
-            minusToCart={minusToCart}
-            updateNumber={updateNumber}
-            plusToCart={plusToCart}
-            moveToCart={moveToCart}
-            pickItem={pickItem}
-            removeFromStorage={removeFromStorage}
-            basicButtons
-          />
-        ) : (
-          <EmptyCart resetFilter={resetFilter} showResetButton />
-        )}
-        <MorePanel displayMore={displayMore} />
+        <HidePanel hideCards={hideCards} toggleCards={toggleCards} />
+        <CSSTransition
+          in={hideCards}
+          timeout={300}
+          classNames="alert"
+          unmountOnExit
+        >
+          {props.foods && props.foods.length > 0 ? (
+            <>
+              <ItemsList
+                foods={props.foods}
+                minusToCart={minusToCart}
+                updateNumber={updateNumber}
+                plusToCart={plusToCart}
+                moveToCart={moveToCart}
+                pickItem={pickItem}
+                removeFromStorage={removeFromStorage}
+                basicButtons
+              />
+              <MorePanel displayMore={displayMore} />
+            </>
+          ) : (
+            <EmptyCart resetFilter={resetFilter} showResetButton />
+          )}
+        </CSSTransition>
         <Footer />
       </PageLayout>
     </CSSTransition>
